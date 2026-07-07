@@ -1,0 +1,166 @@
+\makeatletter
+\geometry{
+  paperwidth=176mm,
+  paperheight=250mm,
+  inner=16mm,
+  outer=16mm,
+  top=18mm,
+  bottom=18mm,
+  headheight=24pt,
+  headsep=8mm
+}
+
+\definecolor{cqbg}{HTML}{0B1020}
+\definecolor{cqcodebg}{HTML}{11192E}
+\definecolor{cqtoolbar}{HTML}{0F1A31}
+\definecolor{cqink}{HTML}{101826}
+\definecolor{cqtext}{HTML}{E6EEF8}
+\definecolor{cqmuted}{HTML}{9FB3C9}
+\definecolor{cqcyan}{HTML}{49D9FF}
+\definecolor{cqlime}{HTML}{B1FF5C}
+\definecolor{cqyellow}{HTML}{FFD84D}
+\definecolor{cqmagenta}{HTML}{FF7DC8}
+\definecolor{cqpanel}{HTML}{F5F7FB}
+\definecolor{cqsoft}{HTML}{EAF1F8}
+\definecolor{cqline}{HTML}{C9D5E5}
+\definecolor{cqdarkpanel}{HTML}{1D2E45}
+
+\pagecolor{cqbg}
+\color{cqtext}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.4em, itemsep=0.2em, topsep=0.3em}
+\setlist[enumerate]{leftmargin=1.6em, itemsep=0.2em, topsep=0.3em}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textcolor{cqcyan}{\small\ttfamily\bfseries \IssueCollection}}
+\fancyhead[CE,CO]{\textcolor{cqtext}{\small \IssueTitle}}
+\fancyhead[RE,LO]{\textcolor{cqlime}{\small\ttfamily\bfseries \IssueLevel{} \textbullet{} \IssueNumber}}
+\fancyfoot[CE,CO]{\textcolor{cqmuted}{\small\ttfamily\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cqcyan!35}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\section}
+  {\Large\bfseries\color{cqtext}}
+  {}
+  {0pt}
+  {}
+  [\vspace{0.2em}\color{cqcyan}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{cqpanel}}
+  {}
+  {0pt}
+  {}
+
+\lstdefinelanguage{QuestPseudo}{
+  morekeywords={citeste,afiseaza,daca,atunci,altfel,cat,timp,executa,sfarsit,pentru,de,la,cu,pas,si,sau,repeta,rand,nou},
+  sensitive=false,
+  morecomment=[l]{//},
+  morestring=[b]"
+}
+
+\lstdefinestyle{codequest}{
+  language=QuestPseudo,
+  basicstyle=\ttfamily\small\color{cqtext},
+  keywordstyle=\color{cqcyan}\bfseries,
+  commentstyle=\color{cqmuted}\itshape,
+  stringstyle=\color{cqyellow},
+  showstringspaces=false,
+  frame=single,
+  frameround=tttt,
+  rulecolor=\color{cqcyan!55},
+  backgroundcolor=\color{cqcodebg},
+  tabsize=2,
+  breaklines=true,
+  keepspaces=true,
+  columns=fullflexible
+}
+
+\lstdefinestyle{languagequest}{
+  style=codequest,
+  numbers=left,
+  numberstyle=\tiny\color{cqmuted},
+  stepnumber=1,
+  numbersep=6pt
+}
+
+\newcommand{\cq@theme}{story}
+\newcommand{\SetPageTheme}[1]{\gdef\cq@theme{#1}}
+
+\newcommand{\BlocklyGhost}[4]{%
+  \begin{scope}[shift={({#1},{#2})}, scale=#3]
+    \fill[#4, opacity=0.11, rounded corners=3pt] (0,0) rectangle (3.6,1.0);
+    \fill[#4, opacity=0.11, rounded corners=2pt] (0.8,1.0) rectangle (1.8,1.32);
+    \fill[cqbg] (1.15,0) rectangle (1.95,0.22);
+    \draw[#4, opacity=0.30, line width=0.5pt, rounded corners=3pt] (0,0) rectangle (3.6,1.0);
+    \draw[#4, opacity=0.30, line width=0.5pt, rounded corners=2pt] (0.8,1.0) rectangle (1.8,1.32);
+  \end{scope}
+}
+
+\newcommand{\cqThemeDecoration}{%
+  \ifstrequal{\cq@theme}{paper}{%
+  }{}
+  \ifstrequal{\cq@theme}{story}{%
+    \BlocklyGhost{1.0cm}{-1.4cm}{1.06}{cqmagenta}
+    \BlocklyGhost{10.9cm}{-20.9cm}{0.92}{cqcyan}
+    \draw[cqmagenta!20, line width=0.45pt]
+      ([xshift=1.1cm,yshift=-1.6cm]current page.north west) --
+      ([xshift=-1.1cm,yshift=-1.6cm]current page.north east);
+  }{}
+  \ifstrequal{\cq@theme}{theory}{%
+    \BlocklyGhost{1.0cm}{-2.6cm}{0.90}{cqcyan}
+    \BlocklyGhost{11.0cm}{-2.2cm}{0.84}{cqlime}
+    \BlocklyGhost{1.2cm}{-21.4cm}{0.82}{cqyellow}
+    \draw[cqcyan!22, line width=0.45pt]
+      ([xshift=1.3cm,yshift=-2.1cm]current page.north west) --
+      ([xshift=-1.3cm,yshift=-2.1cm]current page.north east);
+  }{}
+  \ifstrequal{\cq@theme}{guided}{%
+    \BlocklyGhost{0.7cm}{-1.4cm}{0.88}{cqyellow}
+    \BlocklyGhost{11.1cm}{-3.0cm}{0.88}{cqmagenta}
+    \BlocklyGhost{10.9cm}{-21.3cm}{1.00}{cqlime}
+    \draw[cqyellow!22, line width=0.45pt]
+      ([xshift=1.1cm,yshift=1.35cm]current page.south west) --
+      ([xshift=-1.1cm,yshift=1.35cm]current page.south east);
+  }{}
+  \ifstrequal{\cq@theme}{simulation}{%
+    \fill[cqcyan!5] ([xshift=1.0cm,yshift=-5.0cm]current page.north west) rectangle
+                    ([xshift=-1.0cm,yshift=-17.8cm]current page.north east);
+    \BlocklyGhost{1.3cm}{-5.6cm}{0.84}{cqcyan}
+    \BlocklyGhost{10.6cm}{-15.2cm}{0.92}{cqmagenta}
+    \draw[cqcyan!25, line width=0.55pt]
+      ([xshift=1.3cm,yshift=-4.7cm]current page.north west) --
+      ([xshift=-1.3cm,yshift=-4.7cm]current page.north east);
+    \draw[cqcyan!25, line width=0.55pt]
+      ([xshift=1.3cm,yshift=-18.0cm]current page.north west) --
+      ([xshift=-1.3cm,yshift=-18.0cm]current page.north east);
+  }{}
+  \ifstrequal{\cq@theme}{challenge}{%
+    \BlocklyGhost{0.9cm}{-2.4cm}{1.05}{cqyellow}
+    \BlocklyGhost{10.7cm}{-2.2cm}{0.94}{cqcyan}
+    \BlocklyGhost{1.2cm}{-20.7cm}{0.84}{cqmagenta}
+    \draw[cqyellow!20, line width=0.45pt]
+      ([xshift=1.1cm,yshift=-2.0cm]current page.north west) --
+      ([xshift=-1.1cm,yshift=-2.0cm]current page.north east);
+    \draw[cqmagenta!20, line width=0.45pt]
+      ([xshift=1.3cm,yshift=1.4cm]current page.south west) --
+      ([xshift=-1.3cm,yshift=1.4cm]current page.south east);
+  }{}
+}
+
+\AddToHook{shipout/background}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \ifstrequal{\cq@theme}{paper}{%
+      \fill[white] (current page.south west) rectangle (current page.north east);
+    }{%
+      \fill[cqbg] (current page.south west) rectangle (current page.north east);
+    }%
+    \cqThemeDecoration
+  \end{tikzpicture}%
+}
+\makeatother

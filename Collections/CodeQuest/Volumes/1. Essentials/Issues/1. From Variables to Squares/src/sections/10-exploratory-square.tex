@@ -1,0 +1,472 @@
+\SetPageTheme{story}
+\PageHeader
+  {Structuri imbricate}
+  {Cu o singura bucla numeri pe o directie. Cu doua bucle incepi sa parcurgi o suprafata intreaga.}
+  {Explorare 1 din 18}
+
+\begin{missionbox}[Unde se schimba nivelul]
+Pana acum am lucrat cu stari, conditii si repetitii pe o singura axa. De aici intram in partea care duce direct spre randare: randuri, coloane, pozitii si forme.
+
+Asta inseamna ca jocul nu mai decide doar \textit{ce} se intampla, ci si \textit{unde} se intampla.
+\end{missionbox}
+
+\BlocklyExperiment{cq-i1-grid-scan}{Parcurgere pe grila}{Leaga bucla exterioara de randuri si bucla interioara de coloane. Urmareste ordinea exacta in care sunt atinse celulele.}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Modelul de baza}
+  {Exteriorul controleaza randul. Interiorul controleaza pozitia din acel rand.}
+  {Explorare 2 din 18}
+
+\begin{examplebox}[Scheletul de lucru]
+\begin{lstlisting}[style=codequest]
+pentru linie de la 1 la n cu pas 1 executa
+    pentru coloana de la 1 la n cu pas 1 executa
+        afiseaza "#"
+    sfarsit
+    rand nou
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{conceptbox}[Cum il citim]
+Nu incercam sa memoram mecanic codul. Il citim logic:
+\begin{itemize}
+\item bucla exterioara decide de cate ori pornim un rand nou;
+\item bucla interioara decide cate pozitii completam in acel rand;
+\item instructiunea \texttt{rand nou} separa randurile in output.
+\end{itemize}
+\end{conceptbox}
+
+\SyntaxCheck{imbricate}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Primul patrat}
+  {Inainte de diagonale si jocuri, trebuie sa vedem clar cum se naste un patrat din parcurgere.}
+  {Explorare 3 din 18}
+
+\begin{guidebox}[Trace pentru n = 4]
+Deseneaza output-ul produs de modelul de baza pentru \texttt{n = 4}. Apoi raspunde:
+\begin{enumerate}
+\item cate randuri apar;
+\item cate simboluri sunt pe fiecare rand;
+\item cate celule sunt desenate in total.
+\end{enumerate}
+\AnswerSpace{9}
+\end{guidebox}
+
+\begin{missionbox}[De ce insistam aici]
+Daca aceasta pagina este clara, tot ce urmeaza devine natural. Toate formele de mai tarziu vor fi doar variante ale aceleiasi idei: parcurgi pozitii si alegi ce afisezi in fiecare pozitie.
+\end{missionbox}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Coordonate}
+  {Ca sa descrii o pozitie, ai nevoie de o pereche: linie si coloana.}
+  {Explorare 4 din 18}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{checkpointbox}[Grid 5x5]
+\begin{center}
+\begin{tikzpicture}[scale=0.68]
+  \draw[step=1cm, cqline, thin] (0,0) grid (5,5);
+  \draw[cqcyan, very thick, ->] (0,0) -- (5.8,0) node[right] {\small coloana};
+  \draw[cqlime, very thick, ->] (0,0) -- (0,5.8) node[above] {\small linie};
+  \node[text=cqink] at (0.6,4.4) {\scriptsize (1,1)};
+  \node[text=cqink] at (4.4,0.6) {\scriptsize (5,5)};
+\end{tikzpicture}
+\end{center}
+\end{checkpointbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{missionbox}[Cum gandeste programul]
+Calculatorul nu vede un patrat ca pe o singura imagine. El viziteaza pozitii una cate una. Pentru fiecare pozitie stie unde se afla si decide ce simbol sau ce culoare trebuie pusa acolo.
+\end{missionbox}
+\end{minipage}
+
+\begin{semibox}[Aplicam]
+Scrie trei pozitii valide dintr-o tabla 5x5 si explica in cuvinte ce reprezinta fiecare.
+\AnswerSpace{5}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Diagonale}
+  {Diagonalele sunt primele reguli elegante care apar atunci cand compari coordonatele.}
+  {Explorare 5 din 18}
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{conceptbox}[Diagonala principala]
+O pozitie este pe diagonala principala daca:
+\begin{center}
+\texttt{linie == coloana}
+\end{center}
+\end{conceptbox}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{conceptbox}[Diagonala secundara]
+O pozitie este pe diagonala secundara daca:
+\begin{center}
+\texttt{linie + coloana == n + 1}
+\end{center}
+\end{conceptbox}
+\end{minipage}
+
+\begin{guidebox}[Aplicare]
+Pentru un patrat 5x5:
+\begin{enumerate}
+\item scrie toate pozitiile de pe diagonala principala;
+\item scrie toate pozitiile de pe diagonala secundara;
+\item observa ce pozitie apartine ambelor diagonale.
+\end{enumerate}
+\AnswerSpace{8}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Zone si contur}
+  {Odata ce stii diagonalele, poti descrie si regiunile din jurul lor.}
+  {Explorare 6 din 18}
+
+\begin{conceptbox}[Reguli utile]
+\begin{itemize}
+\item deasupra diagonalei principale: \texttt{coloana > linie}
+\item sub diagonala principala: \texttt{coloana < linie}
+\item pe margine: \texttt{linie == 1} sau \texttt{linie == n} sau \texttt{coloana == 1} sau \texttt{coloana == n}
+\end{itemize}
+\end{conceptbox}
+
+\begin{guidebox}[Doua aplicatii]
+\begin{enumerate}
+\item Clasifica pozitiile \texttt{(2,4), (5,1), (3,3), (1,2)} fata de diagonala principala.
+\item Descrie in pseudocod cum ai afisa un patrat gol pe interior.
+\end{enumerate}
+\AnswerSpace{9}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Triunghiuri si romburi}
+  {Nu schimbam ideea de baza. Schimbam doar regulile dupa care limitam sau filtram pozitiile.}
+  {Explorare 7 din 18}
+
+\begin{examplebox}[Triunghi crescator]
+\begin{lstlisting}[style=codequest]
+pentru linie de la 1 la n cu pas 1 executa
+    pentru coloana de la 1 la linie cu pas 1 executa
+        afiseaza "#"
+    sfarsit
+    rand nou
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Cum gandim rombul]
+Rombul se poate privi ca doua triunghiuri lipite:
+\begin{enumerate}
+\item in partea de sus creste numarul de simboluri;
+\item in partea de jos descreste;
+\item numarul de spatii se ajusteaza invers pentru a pastra forma.
+\end{enumerate}
+\end{missionbox}
+
+\begin{semibox}[Aplicam]
+Scrie in cuvinte ce se modifica de la un rand la altul intr-un romb: numar de spatii, numar de simboluri, punctul in care forma incepe sa se inchida.
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Simularea grilei}
+  {Aici merita sa vezi efectiv traseul: ordinea vizitarii si felul in care creste numarul de celule.}
+  {Explorare 8 din 18}
+
+\SimulatorCard{cq-i1-grid-scan}{Parcurgere pe grila}{Ordinea in care sunt vizitate celulele intr-o structura imbricata si felul in care regulile de diagonala sau margine schimba marcajul final.}{Creste dimensiunea grilei si compara numarul de randuri, numarul de coloane si numarul total de celule parcurse.}
+
+\begin{semibox}[Dupa scanare]
+\begin{enumerate}
+\item Ce creste liniar si ce creste mult mai repede cand maresti \texttt{n}?
+\item Cum se vede in simulator diferenta dintre o regula de diagonala si o regula de margine?
+\item Ce forma ai vrea sa incerci dupa ce ai inteles patratul si triunghiul?
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Exersare pe modele}
+  {Acum aplici regulile fara sa mai primesti de fiecare data drumul complet.}
+  {Explorare 9 din 18}
+
+\begin{solobox}[Set de lucru]
+\begin{enumerate}
+\item Scrie pseudocod pentru un patrat plin.
+\item Scrie pseudocod pentru un patrat gol pe interior.
+\item Scrie pseudocod pentru un patrat in care diagonala principala este marcata cu \texttt{*} si restul pozitiilor cu \texttt{.}.
+\item Scrie pseudocod pentru o tabla de sah in care afisezi \texttt{X} si \texttt{O} dupa paritatea sumei coordonatelor.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\clearpage
+
+\SetPageTheme{story}
+\PageHeader
+  {De ce tocmai Pong}
+  {Pong este un exemplu excelent fiindca pune la lucru aproape toate ideile invatate pana acum.}
+  {Explorare 10 din 18}
+
+\begin{missionbox}[Ce reuneste Pong]
+Pong cere simultan:
+\begin{itemize}
+\item variabile pentru pozitia mingii si a paletelor;
+\item operatori pentru miscarea lor;
+\item structuri \texttt{daca} pentru margini, scor si coliziuni;
+\item repetitie pentru bucla principala a jocului;
+\item coordonate pentru randarea tabloului de joc.
+\end{itemize}
+\end{missionbox}
+
+\begin{conceptbox}[Firul logic]
+Nu construim Pong ca pe un miracol greu de atins. Il spargem in intrebari mici:
+\begin{enumerate}
+\item ce stare trebuie sa tin minte;
+\item cum o actualizez la fiecare pas;
+\item cand schimb directia sau scorul;
+\item cum desenez din nou scena dupa actualizare.
+\end{enumerate}
+\end{conceptbox}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Starea jocului Pong}
+  {Daca starea este clara, jocul incepe sa para mai putin misterios si mult mai programabil.}
+  {Explorare 11 din 18}
+
+\begin{examplebox}[Variabile esentiale]
+\begin{lstlisting}[style=codequest]
+mingeX <- 10
+mingeY <- 6
+vitezaX <- 1
+vitezaY <- 1
+paletaStangaY <- 5
+paletaDreaptaY <- 5
+scorStanga <- 0
+scorDreapta <- 0
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Ce spune fiecare]
+\texttt{mingeX} si \texttt{mingeY} spun unde este mingea acum. \texttt{vitezaX} si \texttt{vitezaY} spun in ce directie si cu ce pas se misca. Pozitiile paletelor spun ce poate atinge mingea. Scorurile pastreaza rezultatul vizibil pentru jucatori.
+\end{missionbox}
+
+\begin{guidebox}[Verificare]
+Ce variabile s-ar schimba in urmatoarele situatii?
+\begin{enumerate}
+\item mingea merge spre dreapta;
+\item paleta stanga urca;
+\item jucatorul din dreapta castiga un punct.
+\end{enumerate}
+\AnswerSpace{6}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Bucla principala}
+  {Un joc precum Pong nu ruleaza o singura data. El repeta acelasi ciclu iar si iar.}
+  {Explorare 12 din 18}
+
+\begin{examplebox}[Un ciclu simplificat]
+\begin{lstlisting}[style=codequest]
+cat timp (jocul este activ) executa
+    citeste comenzile jucatorilor
+    actualizeaza pozitia mingii
+    verifica margini si coliziuni
+    actualizeaza scorul daca este cazul
+    redeseneaza scena
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[De ce este importanta ordinea]
+Ordinea pasilor conteaza. Daca desenezi inainte sa actualizezi pozitia mingii, pe ecran ramane o informatie veche. Daca verifici scorul inainte sa vezi unde a ajuns mingea, poti rata exact momentul in care cineva castiga punctul.
+\end{missionbox}
+
+\begin{semibox}[Explica succesiunea]
+Descrie in 5--6 randuri de ce acest ciclu trebuie repetat de multe ori pe secunda pentru ca jocul sa para viu.
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Miscarea si coliziunile}
+  {Acum vedem cum se schimba directia mingii si cand se modifica scorul.}
+  {Explorare 13 din 18}
+
+\begin{guidebox}[Trei reguli esentiale]
+Completeaza in cuvinte sau pseudocod:
+\begin{enumerate}
+\item Ce se intampla daca mingea atinge marginea de sus sau de jos?
+\item Ce se intampla daca mingea loveste o paleta?
+\item Ce se intampla daca mingea trece de paleta si iese din teren?
+\end{enumerate}
+\AnswerSpace{10}
+\end{guidebox}
+
+\begin{conceptbox}[Observatie utila]
+Multe jocuri simple par vizuale, dar in centru au doar reguli despre coordonate si stari. Asta este vestea buna: daca stii regulile, poti construi jocul pas cu pas.
+\end{conceptbox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Pong lucrat complet}
+  {Punem laolalta starea, bucla, miscarea si verificarea coliziunilor.}
+  {Explorare 14 din 18}
+
+\begin{semibox}[Scenariu de urmarit]
+Pornim cu:
+\begin{center}
+\texttt{mingeX = 10, mingeY = 6, vitezaX = 1, vitezaY = -1}
+\end{center}
+Urmarind trei pasi consecutivi:
+\begin{enumerate}
+\item scrie noua pozitie a mingii dupa fiecare pas;
+\item spune daca atinge o margine;
+\item spune daca ar trebui schimbata directia.
+\end{enumerate}
+\AnswerSpace{10}
+\end{semibox}
+
+\begin{solobox}[Mini-proiect Pong]
+Descrie clar, in 6--8 randuri, cum ai organiza un mic joc Pong pe text sau pe grila: ce variabile ai folosi, ce se repeta, ce se verifica si cand se redeseneaza scena.
+\AnswerSpace{8}
+\end{solobox}
+
+\clearpage
+
+\SetPageTheme{story}
+\PageHeader
+  {De la Pong la TicTacToe}
+  {Daca Pong iti arata miscarea continua, TicTacToe iti arata decizia pe o tabla fixa.}
+  {Explorare 15 din 18}
+
+\begin{missionbox}[De ce este urmatorul pas potrivit]
+TicTacToe este o sinteza foarte buna pentru aceasta editie:
+\begin{itemize}
+\item ai o tabla 3x3, deci apar grile si coordonate;
+\item ai mutari succesive, deci apare schimbarea starii;
+\item ai verificari de castig, deci apar conditii clare;
+\item ai nevoie de ordine si de reguli, dar nu ai inca fizica complicata.
+\end{itemize}
+\end{missionbox}
+
+\begin{conceptbox}[Starea minima]
+Trebuie sa retii:
+\begin{itemize}
+\item continutul celor 9 celule;
+\item al cui este randul;
+\item daca partida continua, este castigata sau este remiza.
+\end{itemize}
+\end{conceptbox}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Tabla si mutarile}
+  {O mutare buna inseamna mai intai o verificare: celula este libera sau ocupata?}
+  {Explorare 16 din 18}
+
+\begin{examplebox}[Model simplificat]
+\begin{lstlisting}[style=codequest]
+daca (tabla[linie][coloana] este libera) atunci
+    tabla[linie][coloana] <- jucatorCurent
+    schimba jucatorul
+altfel
+    afiseaza "Mutare invalida"
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{guidebox}[Aplicare]
+Descrie ce se intampla in trei cazuri:
+\begin{enumerate}
+\item jucatorul alege o celula goala;
+\item jucatorul alege o celula deja ocupata;
+\item dupa mutare se completeaza o linie intreaga cu acelasi simbol.
+\end{enumerate}
+\AnswerSpace{8}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Detectia victoriei}
+  {Aici se vede foarte clar legatura dintre grila, conditii si reguli de final.}
+  {Explorare 17 din 18}
+
+\SimulatorCard{cq-i1-tictactoe-board}{Tabla interactiva 3x3}{Felul in care se actualizeaza tabla dupa fiecare mutare si momentul in care o combinatie castigatoare devine adevarata.}{Simuleaza doua partide: una castigata pe linie, alta pe diagonala. Noteaza pasul exact in care conditia de victorie devine adevarata.}
+
+\begin{semibox}[Dupa scanare]
+\begin{enumerate}
+\item Ce verifici prima data: liniile, coloanele sau diagonalele?
+\item Cum ai detecta remiza?
+\item De ce este important sa refuzi mutarile invalide inainte sa schimbi jucatorul?
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Provocarea mare}
+  {Acum ai toate piesele pentru a descrie si construi un TicTacToe clar, corect si usor de extins.}
+  {Explorare 18 din 18}
+
+\begin{bossbox}[Construieste jocul]
+Construieste o versiune functionala de TicTacToe sau descrie-o complet in pseudocod, astfel incat sa aiba:
+\begin{enumerate}
+\item o tabla 3x3;
+\item alternarea jucatorilor;
+\item respingerea mutarilor invalide;
+\item detectia victoriei pe linie, coloana si diagonala;
+\item detectia remizei;
+\item afisarea starii dupa fiecare mutare.
+\end{enumerate}
+\end{bossbox}
+
+\begin{solobox}[Remix personal]
+Propune o varianta alterata a jocului. Poti schimba tema, simbolurile, dimensiunea tablei sau regula de victorie. Explica in 6--8 randuri ce ai schimbat si de ce varianta ta ramane clara pentru un alt jucator.
+\AnswerSpace{10}
+\end{solobox}
+
+\clearpage

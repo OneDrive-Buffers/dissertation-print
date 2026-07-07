@@ -1,0 +1,162 @@
+\SetPageTheme{story}
+\PageHeader
+  {Structura pentru}
+  {Cand intervalul este clar de la inceput, putem strange numararea intr-o forma mai scurta si mai ordonata.}
+  {Pentru 1 din 6}
+
+\begin{missionbox}[De ce mai avem nevoie de ea]
+Structura \texttt{cat timp} ne invata foarte bine ideea de repetitie. Dar multe probleme sunt deja planificate:
+\begin{itemize}
+\item stii de la ce valoare pornesti;
+\item stii pana unde mergi;
+\item stii cu ce pas avansezi.
+\end{itemize}
+
+In aceste situatii, structura \texttt{pentru} este mai lizibila si mai usor de verificat.
+\end{missionbox}
+
+\BlocklyExperiment{cq-i1-for-interval}{Parcurgere pe interval}{Modifica startul, limita si pasul, apoi compara secventele obtinute si acoperirea intervalului.}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Cele trei componente}
+  {Startul, limita si pasul trebuie gandite impreuna, nu separat.}
+  {Pentru 2 din 6}
+
+\begin{examplebox}[Modelul de baza]
+\begin{lstlisting}[style=codequest]
+pentru i de la 1 la 5 cu pas 1 executa
+    afiseaza i
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{conceptbox}[Ce spune dintr-o privire]
+\begin{itemize}
+\item \textbf{de la 1} inseamna valoarea de start;
+\item \textbf{la 5} inseamna limita;
+\item \textbf{cu pas 1} inseamna ritmul de parcurgere.
+\end{itemize}
+Aceasta claritate este motivul pentru care \texttt{pentru} este atat de folosita in randare si in parcurgerea grilelor.
+\end{conceptbox}
+
+\begin{guidebox}[Identificare]
+Pentru fiecare secventa, noteaza startul, limita si pasul:
+\begin{enumerate}
+\item \texttt{pentru i de la 1 la 10 cu pas 1}
+\item \texttt{pentru i de la 2 la 20 cu pas 2}
+\item \texttt{pentru i de la 10 la 0 cu pas -1}
+\end{enumerate}
+\AnswerSpace{7}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Filtram in interiorul intervalului}
+  {Parcurgerea si selectia merg foarte des impreuna.}
+  {Pentru 3 din 6}
+
+\begin{examplebox}[Pare dintr-un interval]
+\begin{lstlisting}[style=codequest]
+pentru i de la 1 la 12 cu pas 1 executa
+    daca (i este par) atunci
+        afiseaza i
+    sfarsit
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Legatura cu jocurile]
+Exact asa functioneaza multe mini-sarcini din jocuri:
+\begin{itemize}
+\item verifici toate celulele de pe un rand;
+\item verifici toate monedele dintr-o lista;
+\item verifici toate pozitiile de pe o linie de harta;
+\item marchezi doar elementele care respecta o regula.
+\end{itemize}
+\end{missionbox}
+
+\begin{semibox}[Aplicam]
+Scrie doua variante:
+\begin{enumerate}
+\item afiseaza multiplii lui 3 pana la 24;
+\item afiseaza doar valorile impare dintre 1 si 15.
+\end{enumerate}
+\AnswerSpace{8}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Podul catre randare}
+  {Acelasi tipar de interval devine, mai tarziu, o linie de celule sau o linie de pixeli.}
+  {Pentru 4 din 6}
+
+\begin{missionbox}[Cum se leaga de partea vizuala]
+Cand randam o linie, programul parcurge pozitii una cate una:
+\begin{center}
+\textit{de la stanga la dreapta, de la coloana 1 la coloana n}
+\end{center}
+De aceea structura \texttt{pentru} este atat de potrivita pentru tabla de joc, matrice si desenarea formelor.
+\end{missionbox}
+
+\begin{guidebox}[Aplicatie pe o linie de tabla]
+Construieste o bucla care parcurge coloanele 1..8 si afiseaza:
+\begin{itemize}
+\item \texttt{X} pe coloanele pare;
+\item \texttt{.} pe coloanele impare.
+\end{itemize}
+
+Scrie si o propozitie scurta despre cum ai traduce acelasi model pentru un rand complet dintr-un joc.
+\AnswerSpace{10}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Simularea intervalului}
+  {Aici vezi imediat ce castigi si ce pierzi atunci cand schimbi pasul.}
+  {Pentru 5 din 6}
+
+\SimulatorCard{cq-i1-for-interval}{Interval si pas}{Felul in care pasul modifica numarul de iteratii, valorile atinse si densitatea parcurgerii.}{Testeaza acelasi interval cu pasi diferiti, apoi explica ce valori au fost vizitate si ce valori au fost sarite.}
+
+\begin{semibox}[Dupa scanare]
+\begin{enumerate}
+\item Cand pasul este 1, ce avantaj de claritate ai?
+\item Cand pasul este mare, ce risc apare?
+\item Ce pas ai alege pentru a desena fiecare celula de pe un rand? Dar pentru a vizita doar anumite coloane?
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Scrii intervale complete}
+  {Acum alegi singur forma potrivita si explici logica din spatele ei.}
+  {Pentru 6 din 6}
+
+\SyntaxCheck{pentru}
+
+\begin{solobox}[Set complet]
+\begin{enumerate}
+\item Scrie o bucla pentru toate valorile 1..30 divizibile cu 5.
+\item Scrie o bucla descrescatoare 21..0 cu pas 3.
+\item Scrie o bucla care afiseaza doar valorile ce trec o conditie aleasa de tine.
+\item Explica in 4--5 randuri de ce structura \texttt{pentru} este mai potrivita decat \texttt{cat timp} atunci cand intervalul este deja cunoscut.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\begin{checkpointbox}[Ideea care ramane]
+\texttt{Pentru} este forma cea mai buna cand numararea este planificata: interval cunoscut, pas clar, rezultat usor de verificat.
+\end{checkpointbox}
+
+\clearpage

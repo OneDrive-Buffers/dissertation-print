@@ -1,0 +1,89 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 3}{Ce se intampla la puteri ale lui 10}{L3 • P1}
+
+\begin{missionbox}[Mai mult decat o cifra]
+  Daca impartirea la 10 ne ajuta sa lucram cu ultima cifra, atunci puterile lui 10 ne ajuta sa lucram cu ultimele doua, trei sau mai multe cifre.
+
+  Aceasta idee este utila nu doar in probleme scolare. In prelucrarea informatiei, uneori trebuie sa izolam capete de date, grupuri de simboluri sau bucati fixe dintr-un cod.
+\end{missionbox}
+
+\begin{conceptbox}[Generalizarea]
+  \begin{itemize}
+    \item \texttt{n \% 100} da ultimele doua cifre;
+    \item \texttt{n / 100} elimina ultimele doua cifre;
+    \item \texttt{n \% 1000} da ultimele trei cifre;
+    \item \texttt{n / 1000} elimina ultimele trei cifre.
+  \end{itemize}
+\end{conceptbox}
+
+\begin{guidebox}[Inceput ghidat]
+  Pentru \texttt{n = 5384}, ultimele doua cifre sunt \hrulefill iar numarul ramas dupa \texttt{/ 100} este \hrulefill
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 3}{Vedem mecanismul}{L3 • P2}
+
+\begin{examplebox}[Exemple explicate]
+  \begin{itemize}
+    \item \texttt{5384 \% 100 = 84}
+    \item \texttt{5384 / 100 = 53}
+    \item \texttt{5384 \% 1000 = 384}
+    \item \texttt{5384 / 1000 = 5}
+  \end{itemize}
+\end{examplebox}
+
+\begin{guidebox}[Exercitii ghidate]
+  Completeaza:
+  \begin{itemize}
+    \item \texttt{76429 \% 100 =} \hrulefill
+    \item \texttt{76429 / 100 =} \hrulefill
+    \item \texttt{76429 \% 1000 =} \hrulefill
+    \item \texttt{76429 / 1000 =} \hrulefill
+  \end{itemize}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 3}{Comparatii utile}{L3 • P3}
+
+\begin{solobox}[Exercitii semi-ghidate]
+  1. Completeaza tabelul:
+  \begin{center}
+  \begin{tabularx}{\linewidth}{|X|X|X|X|X|}
+    \hline
+    \textbf{n} & \textbf{\% 10} & \textbf{/ 10} & \textbf{\% 100} & \textbf{/ 100} \\
+    \hline
+    9062 & & & & \\
+    \hline
+    430 & & & & \\
+    \hline
+  \end{tabularx}
+  \end{center}
+
+  2. Scrie in cuvinte diferenta dintre \texttt{\% 10} si \texttt{\% 100}.
+\end{solobox}
+
+\begin{solobox}[Independent scurt]
+  Da un exemplu de situatie in care ai vrea sa izolezi ultimele trei cifre ale unui numar.
+  \AnswerSpace{3}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 3}{Consolidare independenta}{L3 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Calculeaza pentru \texttt{n = 902718}:
+  \begin{itemize}
+    \item \texttt{n \% 10}
+    \item \texttt{n / 10}
+    \item \texttt{n \% 100}
+    \item \texttt{n / 100}
+    \item \texttt{n \% 1000}
+    \item \texttt{n / 1000}
+  \end{itemize}
+
+  2. Explica de ce puterile lui 10 sunt potrivite pentru lucrul cu cifrele.
+  \AnswerSpace{8}
+\end{solobox}

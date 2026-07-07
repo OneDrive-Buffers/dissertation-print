@@ -1,0 +1,228 @@
+\thispagestyle{empty}
+\pagecolor{cqbg}
+\color{cqtext}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[cqbg] (current page.south west) rectangle (current page.north east);
+
+  \foreach \x in {0.8,1.8,...,16.8} {
+    \draw[cqcyan!8, line width=0.35pt]
+      ([xshift=\x cm]current page.south west) -- ([xshift=\x cm]current page.north west);
+  }
+  \foreach \y in {0.8,1.8,...,24.8} {
+    \draw[cqcyan!8, line width=0.35pt]
+      ([yshift=\y cm]current page.south west) -- ([yshift=\y cm]current page.south east);
+  }
+
+  \foreach \x/\y/\d in {
+    1.2/21.3/1,2.6/19.6/2,1.4/17.2/3,3.1/15.5/5,
+    15.4/20.8/8,14.2/18.3/0,16.1/15.8/4,13.6/13.2/7,
+    2.0/7.0/9,3.4/5.4/1,14.7/6.8/6,16.2/4.9/2
+  } {
+    \node[text=cqcyan, opacity=0.28, font=\ttfamily\bfseries\fontsize{28}{28}\selectfont]
+      at ([xshift=\x cm,yshift=\y cm]current page.south west) {\d};
+  }
+
+  \draw[cqcyan!60, line width=1.2pt, rounded corners=7pt]
+    ([xshift=9.8cm,yshift=-1.2cm]current page.north west) rectangle
+    ([xshift=-1.0cm,yshift=-3.1cm]current page.north east);
+  \node[anchor=west, text=cqmuted, font=\ttfamily\scriptsize]
+    at ([xshift=10.2cm,yshift=-1.65cm]current page.north west) {ALGORITHMIC THINKING};
+  \node[anchor=west, text=cqcyan, font=\bfseries\fontsize{24}{24}\selectfont]
+    at ([xshift=10.2cm,yshift=-2.45cm]current page.north west) {LEVEL 1};
+  \node[anchor=east, text=cqyellow, font=\ttfamily\bfseries\scriptsize]
+    at ([xshift=-1.35cm,yshift=-2.45cm]current page.north east) {ISSUE 1};
+
+  \node[anchor=west, text=cqcyan, font=\ttfamily\bfseries\Large]
+    at ([xshift=3.7cm,yshift=-1.7cm]current page.north west) {CODE QUEST};
+  \node[anchor=west, text=cqmuted, font=\ttfamily\small]
+    at ([xshift=3.75cm,yshift=-2.25cm]current page.north west) {number scanner edition};
+
+  \node[anchor=west, align=left, text=white, font=\bfseries\fontsize{32}{34}\selectfont]
+    at ([xshift=3.7cm,yshift=-5.0cm]current page.north west)
+    {CALCULATORUL\\NU STIE\\SA CITEASCA};
+
+  \fill[cqyellow] ([xshift=3.7cm,yshift=-10.55cm]current page.north west)
+    rectangle ([xshift=12.55cm,yshift=-11.15cm]current page.north west);
+  \node[anchor=west, text=cqink, font=\bfseries\large]
+    at ([xshift=3.95cm,yshift=-10.85cm]current page.north west)
+    {Cifre, resturi, oglindiri si palindromuri};
+
+  \draw[cqcyan!70, line width=1.1pt, rounded corners=6pt]
+    ([xshift=3.4cm,yshift=-12.7cm]current page.north west) rectangle
+    ([xshift=15.95cm,yshift=-16.05cm]current page.north west);
+  \node[text=cqcyan, font=\ttfamily\bfseries\Large]
+    at ([xshift=6.1cm,yshift=-14.35cm]current page.north west) {1 2 3 5 3 2 1};
+  \draw[cqmagenta, line width=1.4pt, -{Latex[length=3mm]}]
+    ([xshift=8.0cm,yshift=-14.95cm]current page.north west) --
+    ([xshift=10.95cm,yshift=-14.95cm]current page.north west);
+  \node[text=cqyellow, font=\ttfamily\bfseries\Large]
+    at ([xshift=12.8cm,yshift=-14.35cm]current page.north west) {1 2 3 5 3 2 1};
+  \node[text=cqlime, font=\ttfamily\bfseries\small]
+    at ([xshift=12.8cm,yshift=-15.35cm]current page.north west) {PALINDROM: DA};
+
+  \draw[cqorange!80, line width=1pt, rounded corners=6pt]
+    ([xshift=10.0cm,yshift=-17.0cm]current page.north west) rectangle
+    ([xshift=16.0cm,yshift=-21.7cm]current page.north west);
+  \node[anchor=west, text=cqorange, font=\ttfamily\bfseries\small]
+    at ([xshift=10.35cm,yshift=-17.55cm]current page.north west) {FLUXUL CIFRELOR};
+  \node[anchor=west, text=cqtext, font=\small, align=left]
+    at ([xshift=10.35cm,yshift=-18.4cm]current page.north west)
+    {n mod 10\\n div 10\\oglindit = oglindit * 10 + cifra\\compara cu originalul};
+
+  \draw[cqcyan!75, line width=1pt, rounded corners=6pt]
+    ([xshift=3.4cm,yshift=1.0cm]current page.south west) rectangle
+    ([xshift=9.3cm,yshift=3.6cm]current page.south west);
+  \node[anchor=west, text=cqcyan, font=\ttfamily\bfseries\scriptsize]
+    at ([xshift=3.75cm,yshift=3.15cm]current page.south west) {SCANEAZA SI TESTEAZA};
+  \node[anchor=west, text=cqtext, font=\scriptsize, align=left]
+    at ([xshift=5.75cm,yshift=2.0cm]current page.south west)
+    {Simulari pentru\\descompunere, oglindire\\si verificare.};
+  \begin{scope}[shift={([xshift=3.75cm,yshift=1.35cm]current page.south west)}, scale=0.08]
+    \draw[cqcyan, line width=2pt] (0,0) rectangle (14,14);
+    \fill[cqcyan!20] (1,1) rectangle (5,5);
+    \fill[cqbg] (2,2) rectangle (4,4);
+    \fill[cqcyan!20] (9,1) rectangle (13,5);
+    \fill[cqbg] (10,2) rectangle (12,4);
+    \fill[cqcyan!20] (1,9) rectangle (5,13);
+    \fill[cqbg] (2,10) rectangle (4,12);
+    \foreach \x/\y in {7/2,8/2,7/3,10/7,11/7,10/8,7/9,8/10,9/9,10/10,11/11,12/10,7/12,9/12,12/12} {
+      \fill[cqcyan] (\x,\y) rectangle ++(1,1);
+    }
+  \end{scope}
+
+  \foreach \x/\label/\col in {9.9/MOD/cqcyan,11.5/DIV/cqyellow,13.1/REV/cqmagenta,14.7/OK/cqlime} {
+    \begin{scope}[shift={([xshift=\x cm,yshift=1.45cm]current page.south west)}]
+      \draw[\col, line width=0.9pt, rounded corners=4pt] (0,0) rectangle (1.25,1.25);
+      \node[text=\col, font=\ttfamily\bfseries\scriptsize] at (0.625,0.625) {\label};
+    \end{scope}
+  }
+\end{tikzpicture}
+\null
+\clearpage
+
+\SetPageTheme{paper}
+\pagecolor{white}
+\color{black}
+\thispagestyle{empty}
+\null
+\clearpage
+
+\SetPageTheme{paper}
+\pagecolor{white}
+\color{black}
+\thispagestyle{empty}
+\begin{center}
+{\Huge\bfseries \IssueTitle}\par
+\vspace{0.6em}
+{\Large \IssueSubtitle}\par
+\vspace{1.2em}
+\rule{0.72\linewidth}{0.8pt}\par
+\vspace{1.1em}
+{\large Colectia \IssueCollection{} \textbullet{} \IssueUniverse}\par
+\vspace{0.4em}
+{\normalsize Nivel recomandat: clasa a VII-a si clase apropiate}\par
+\vspace{0.4em}
+{\normalsize Domeniu: algoritmica, prelucrarea informatiei si logica numerelor}
+\end{center}
+
+\vspace{1.4em}
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.8pt,arc=1.5mm]
+\small
+\textbf{Date editoriale}
+
+Acest material este gandit ca auxiliar didactic de lucru, nu doar ca suport de lectura. El urmareste traseul prin care elevul observa, exerseaza ghidat, apoi rezolva independent probleme construite in jurul aceluiasi mecanism algoritmic.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.8pt,arc=1.5mm]
+\small
+\textbf{Cum se foloseste}
+\begin{itemize}
+\item prima etapa: citim atent povestea si ideea noua;
+\item a doua etapa: completam exercitiile ghidate;
+\item a treia etapa: rezolvam sarcinile semi-ghidate;
+\item a patra etapa: lucram independent, cu cat mai putina sustinere.
+\end{itemize}
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+\small Editie construita pentru a arata cum invata calculatorul sa citeasca, sa descompuna si sa verifice informatia.
+\end{center}
+\clearpage
+
+\SetPageTheme{paper}
+\pagecolor{white}
+\color{black}
+\thispagestyle{empty}
+\begin{center}
+{\Huge\bfseries Introducere}\par
+\vspace{0.7em}
+{\Large Ce invatam cu adevarat in acest numar}
+\end{center}
+
+\vspace{1.0em}
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.8pt,arc=1.5mm]
+\small
+Cand trimitem un mesaj, introducem o parola sau cautam ceva pe internet, calculatorul trebuie mai intai sa citeasca informatia intr-o forma pe care o poate controla. Pentru el, textul si numerele nu sunt idei vagi, ci siruri ordonate de simboluri care trebuie descompuse si analizate pas cu pas.
+
+Tocmai de aici incepe confidentialitatea comunicatiei digitale: nu poti proteja ceva ce nu poti identifica, separa, compara si verifica riguros.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.8pt,arc=1.5mm]
+\small
+\textbf{Drumul pe care il vom urma}
+\begin{enumerate}
+\item recapitulam pe scurt ce variabile si ce decizii minime ne trebuie;
+\item studiem serios operatorii \texttt{/} si \texttt{\%};
+\item observam ce se intampla la impartirea la 10 si la puteri ale lui 10;
+\item invatam algoritmul de descompunere a unui numar in cifre;
+\item construim formula pentru oglindit;
+\item intelegem algoritmul de palindrom si il extindem spre exercitii apropiate.
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.8pt,arc=1.5mm]
+\small
+\textbf{Logica didactica}
+
+Fiecare concept nou este predat in trepte: inceput narativ, exercitii ghidate, exercitii semi-ghidate si exercitii independente. Ideea nu este sa memoram un truc, ci sa construim o metoda de lucru repetabila.
+\end{tcolorbox}
+\clearpage
+
+\SetPageTheme{paper}
+\pagecolor{white}
+\color{black}
+\thispagestyle{empty}
+\begin{center}
+{\Huge\bfseries Cuprins}\par
+\vspace{1.2em}
+\end{center}
+
+\begin{tabularx}{\linewidth}{@{}Xr@{}}
+Introducere si traseul cartii & 3 \\
+Recapitulare minima: variabile si decizii & 5 \\
+Lectia 1. Ce fac \texttt{/} si \texttt{\%} & 7 \\
+Lectia 2. Ce se intampla cand impartim la 10 & 11 \\
+Lectia 3. Ce se intampla la puteri ale lui 10 & 15 \\
+Lectia 4. Aplicatii bazate pe ultima cifra & 19 \\
+Lectia 5. Structura repetitiva \texttt{cat timp} & 23 \\
+Lectia 6. Predarea algoritmului de descompunere & 27 \\
+Lectia 7. Intelegerea algoritmului de oglindire & 31 \\
+Lectia 8. Exercitii apropiate algoritmului & 35 \\
+Sinteze, explicatii finale si consolidare & 39 \\
+\end{tabularx}
+
+\vspace{1.2em}
+
+\begin{tcolorbox}[colback=white,colframe=black!55,boxrule=0.7pt,arc=1.5mm]
+\small
+Numerele de pagina sunt orientative pentru aceasta editie si pot fi usor ajustate dupa ultimele schimbari de macheta.
+\end{tcolorbox}
+
+\clearpage
+\pagestyle{fancy}
+\pagecolor{cqbg}
+\color{cqtext}
+\SetPageTheme{story}

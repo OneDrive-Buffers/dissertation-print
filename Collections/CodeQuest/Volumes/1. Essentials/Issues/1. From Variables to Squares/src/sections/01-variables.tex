@@ -1,0 +1,224 @@
+\SetPageTheme{story}
+\PageHeader
+  {Calculatorul nu știe să numere}
+  {Când jocul pornește, calculatorul nu vede eroi, uși sau hărți. Vede doar stări pe care trebuie să le țină minte.}
+  {Arc narativ 1 din 3}
+
+\begin{missionbox}[Intrarea în poveste]
+Jucătorul apare pe hartă. Are vieți, are scor, are o poziție, are un inventar. Toate aceste lucruri trebuie ținute în memorie, altfel jocul uită ce s-a întâmplat după fiecare cadru (frame).
+
+Primul pas de programator nu este să deseneze efecte speciale. Primul pas este să fixeze starea inițială.
+\end{missionbox}
+
+\begin{conceptbox}[Reținem!]
+\begin{itemize}
+\item O \textbf{variabilă} reține o stare curentă a jocului.
+\item Fără stare, nu există progres, memorie sau logică.
+\item Schimbarea vizibilă de pe ecran înseamnă, de fapt, o schimbare invizibilă în memorie.
+\end{itemize}
+\end{conceptbox}
+
+\BlocklyExperiment{cq-i1-ram-cells}{Memoria la pornire}{Leagă blocurile de inițializare cu starea jocului: vieți, scor, nivel, chei. Observă cum fiecare bloc „rezervă” un loc în memoria calculatorului.}
+
+\clearpage
+
+\SetPageTheme{story}
+\PageHeader
+  {Cum gândește mașina}
+  {Mașina nu judecă dacă o alegere este bună sau rea. Ea doar citește valori și execută reguli matematice.}
+  {Arc narativ 2 din 3}
+
+\begin{machinebox}[Model intern simplificat]
+\begin{lstlisting}[style=codequest]
+vieti <- 3
+scor <- 0
+nivel <- 1
+chei <- 0
+\end{lstlisting}
+\end{machinebox}
+
+\begin{missionbox}[Ce înseamnă asta în joc]
+Când personajul pierde o viață, el nu „cade” de pe ecran ca o idee abstractă. În memorie, variabila \texttt{vieti} scade cu o unitate. Când găsește un cristal rar, variabila \texttt{scor} crește.
+
+Această legătură directă dintre scena vizibilă și starea invizibilă este firul narativ care ne va însoți pe parcursul întregii reviste.
+\end{missionbox}
+
+\begin{guidebox}[Primul check]
+Pornește de la valorile de mai sus și urmărește logica:
+\begin{enumerate}
+\item După o greșeală și o coliziune: ce valoare va avea \texttt{vieti}?
+\item După colectarea a două cristale: ce valoare va avea \texttt{scor}?
+\item După trecerea cu succes a primului nivel: ce devine \texttt{nivel}?
+\end{enumerate}
+\AnswerSpace{4}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{story}
+\PageHeader
+  {De la poveste la control}
+  {Când starea este clară, putem controla întregul traseu al jocului: urcare în nivel, blocaje, restart sau bonusuri.}
+  {Arc narativ 3 din 3}
+
+\begin{checkpointbox}[Legătura care rămâne]
+Până la finalul acestei ediții, fiecare idee nouă de programare va răspunde la aceeași întrebare fundamentală:
+\begin{center}
+\textbf{Ce variabilă se schimbă și de ce?}
+\end{center}
+\end{checkpointbox}
+
+\begin{semibox}[Exercițiu de tranziție]
+Imaginează-ți un mini-joc cu un labirint întunecat. Scrie trei stări pe care ai vrea să le urmărești:
+\begin{enumerate}
+\item o stare care măsoară \textbf{progresul} (cât de departe ai ajuns);
+\item o stare care măsoară \textbf{riscul} (cât de aproape este pericolul);
+\item o stare care măsoară \textbf{resursele} (ce ai adunat pentru a supraviețui).
+\end{enumerate}
+\AnswerSpace{4}
+\end{semibox}
+
+\SimulatorCard{cq-i1-ram-cells}{RAM și celule de memorie}{Cum fiecare variabilă ocupă o „celulă” de memorie, iar eticheta (numele) rămâne aceeași chiar dacă valoarea din interior se modifică constant.}{Mișcă sliderul pentru \texttt{vieti} și \texttt{scor} în simulator și observă cum celulele de memorie își schimbă culoarea și conținutul. Poți descrie scena din joc doar citind aceste numere?}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Variabile și memorie}
+  {O variabilă bine aleasă spune limpede ce ține minte jocul și de ce informația aceea contează.}
+  {Variabile 1 din 5}
+
+\begin{conceptbox}[Definiție utilă]
+O variabilă are trei componente esențiale pe care trebuie să le stăpânești:
+\begin{itemize}
+\item \textbf{Numele} (cum o identifici în cod, de exemplu \texttt{viteza});
+\item \textbf{Valoarea curentă} (ce conține acum, de exemplu \texttt{10});
+\item \textbf{Rolul} (ce poveste spune în logica jocului, de exemplu „cât de repede se mișcă inamicul”).
+\end{itemize}
+\end{conceptbox}
+
+\begin{examplebox}[Exemplu minim de declarare]
+\begin{lstlisting}[style=codequest]
+scor <- 0
+vieti <- 3
+energie <- 100
+\end{lstlisting}
+\end{examplebox}
+
+\SyntaxCheck{variabile}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Citim memoria corect}
+  {Ne interesează întotdeauna valoarea de acum, nu istoricul complet al tuturor valorilor care au fost acolo înainte.}
+  {Variabile 2 din 5}
+
+\begin{guidebox}[Ghidat: Suprascrierea]
+Pornim cu următoarea stare inițială:
+\begin{lstlisting}[style=codequest]
+monede <- 4
+chei <- 1
+\end{lstlisting}
+După un eveniment de tip „colectare”, se execută:
+\begin{lstlisting}[style=codequest]
+monede <- 9
+chei <- 2
+\end{lstlisting}
+\begin{enumerate}
+\item Ce valori rămân în memorie la finalul execuției?
+\item Care valoare veche a fost „ștearsă” sau înlocuită?
+\item De ce crezi că nu putem avea două valori simultan pentru aceeași variabilă?
+\end{enumerate}
+\AnswerSpace{6}
+\end{guidebox}
+
+\begin{guidebox}[Ghidat cu desen: Tabel de stare]
+Completează tabelul de mai jos urmărind valorile finale dintr-o sesiune de joc:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Variabilă & Valoare Inițială & Valoare Finală \\
+\midrule
+\texttt{scor} & 5 & \\
+\texttt{vieti} & 3 & \\
+\texttt{nivel} & 1 & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\AnswerSpace{4}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Vedem schimbarea în timp real}
+  {Când modifici un slider în simulator, vezi imediat cum se rescrie starea în „măruntaiele” calculatorului.}
+  {Variabile 3 din 5}
+
+\SimulatorCard{cq-i1-variable-state}{Evoluția unei variabile}{Observă cum aceeași variabilă își schimbă valoarea după fiecare eveniment important din joc, fără a crea variabile noi.}{Simulează trei evenimente consecutive: un bonus, o coliziune și atingerea unui checkpoint. Notează după fiecare pas valoarea nouă pe care o ia variabila în memorie.}
+
+\begin{semibox}[Analiză după simulare]
+\begin{enumerate}
+\item Care dintre evenimentele simulate a produs cea mai mare schimbare numerică?
+\item Ce variabilă ai urmări cu cea mai mare atenție dacă ai vrea să detectezi starea de \textit{Game Over}?
+\item Ce variabilă ar indica cel mai clar că jucătorul a câștigat runda?
+\end{enumerate}
+\AnswerSpace{5}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Exersăm cu sprijin redus}
+  {Acum este rândul tău să completezi stări inițiale și să gândești tranziții realiste pentru un joc.}
+  {Variabile 4 din 5}
+
+\begin{semibox}[Construiești un set de stări]
+Construiește un set de variabile pentru un joc de tip „platformer” (precum Mario):
+\begin{enumerate}
+\item Alege 5 variabile relevante pentru acest gen de joc;
+\item Dă-i fiecăreia o valoare inițială logică;
+\item Scrie pentru fiecare variabilă un eveniment concret care i-ar schimba valoarea.
+\end{enumerate}
+\AnswerSpace{8}
+\end{semibox}
+
+\begin{semibox}[Urmărești schimbarea pas cu pas]
+Pornești cu o variabilă numită \texttt{energie <- 6}. După fiecare pas de mai jos, notează noua valoare a energiei:
+\begin{enumerate}
+\item Personajul lovește un obstacol spinos;
+\item Personajul colectează un scut protector;
+\item Personajul folosește o abilitate specială de viteză.
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Rezolvi independent}
+  {Pagina aceasta este spațiul tău pentru o soluție completă, explicată clar, cu spațiu real de lucru.}
+  {Variabile 5 din 5}
+
+\begin{solobox}[Fără ghidaj: Creație proprie]
+Imaginează-ți un mini-joc complet nou (de exemplu, unul cu avioane sau cu gătit) și definește-i structura:
+\begin{enumerate}
+\item Identifică minimum 6 variabile relevante;
+\item Stabilește valori inițiale pentru toate;
+\item Scrie o secvență de 8 linii de cod (pseudocod) în care valorile se schimbă logic;
+\item Explică în 5 rânduri cum se „simte” jocul doar citind aceste schimbări.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\begin{solobox}[Reflexia programatorului]
+Care este diferența fundamentală dintre a avea „un nume de variabilă” și a avea „o variabilă bine aleasă” pentru claritatea codului tău?
+\AnswerSpace{5}
+\end{solobox}
+
+\clearpage

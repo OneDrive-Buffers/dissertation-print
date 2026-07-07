@@ -1,0 +1,121 @@
+\PageHeader
+  {Appendix: aceleași idei în C++}
+  {Până acum am lucrat în pseudocod. Acum vedem cum arată aceleași concepte într-un limbaj real.}
+  {Limbaje 1 din 3}
+
+\begin{languagebox}[Ce să observi]
+În C++ apar tipurile, acoladele și punctul și virgula. Ideile rămân aceleași: variabile, modificări de valori, condiții, repetiții.
+\end{languagebox}
+
+\begin{examplebox}[Variabile și \texttt{if}]
+\begin{lstlisting}[style=languagequest,language=C++]
+int score = 0;
+int lives = 3;
+
+score = score + 5;
+lives = lives - 1;
+
+if (score >= 10) {
+    cout << "Ai trecut mai departe.";
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[\texttt{while} și \texttt{for}]
+\begin{lstlisting}[style=languagequest,language=C++]
+int i = 1;
+while (i <= 5) {
+    cout << i << " ";
+    i = i + 1;
+}
+
+for (int pas = 1; pas <= 3; pas++) {
+    cout << pas << " ";
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{languagebox}[Ne amintim]
+C++ cere mai multă grijă la sintaxă, dar logica programului este aceeași pe care ai exersat-o deja în pseudocod.
+\end{languagebox}
+
+\clearpage
+
+\PageHeader
+  {Appendix: aceleași idei în Python}
+  {Python scrie mai puțin și lasă indentarea să arate structura programului.}
+  {Limbaje 2 din 3}
+
+\begin{languagebox}[Ce să observi]
+În Python nu mai declarăm tipul în fața variabilei, iar blocurile sunt marcate prin indentare, nu prin acolade.
+\end{languagebox}
+
+\begin{examplebox}[Variabile și \texttt{if}]
+\begin{lstlisting}[style=languagequest,language=Python]
+score = 0
+lives = 3
+
+score = score + 5
+lives = lives - 1
+
+if score >= 10:
+    print("Ai trecut mai departe.")
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[\texttt{while} și \texttt{for}]
+\begin{lstlisting}[style=languagequest,language=Python]
+i = 1
+while i <= 5:
+    print(i, end=" ")
+    i = i + 1
+
+for pas in range(1, 4):
+    print(pas, end=" ")
+\end{lstlisting}
+\end{examplebox}
+
+\begin{languagebox}[Ne amintim]
+Python este foarte bun pentru a vedea logic fluxul programului, tocmai pentru că scrie concis.
+\end{languagebox}
+
+\clearpage
+
+\PageHeader
+  {Appendix: aceleași idei în Java}
+  {Java seamănă la structură cu C++, dar este mai strict și mai explicit în multe locuri.}
+  {Limbaje 3 din 3}
+
+\begin{languagebox}[Ce să observi]
+În Java vei vedea tipuri, acolade și instrucțiuni terminate cu punct și virgulă, la fel ca în C++. În schimb, afișarea și organizarea codului sunt puțin diferite.
+\end{languagebox}
+
+\begin{examplebox}[Variabile și \texttt{if}]
+\begin{lstlisting}[style=languagequest,language=Java]
+int score = 0;
+int lives = 3;
+
+score = score + 5;
+lives = lives - 1;
+
+if (score >= 10) {
+    System.out.println("Ai trecut mai departe.");
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[\texttt{while} și \texttt{for}]
+\begin{lstlisting}[style=languagequest,language=Java]
+int i = 1;
+while (i <= 5) {
+    System.out.print(i + " ");
+    i = i + 1;
+}
+
+for (int pas = 1; pas <= 3; pas++) {
+    System.out.print(pas + " ");
+}
+\end{lstlisting}
+\end{examplebox}
+
+\clearpage

@@ -1,0 +1,101 @@
+\SetPageTheme{theory}
+\PageHeader
+  {Evaluare FizzBuzz}
+  {Aceasta evaluare combina variabile, conditii, repetitie si ordinea regulilor.}
+  {FizzBuzz 1 din 4}
+
+\begin{missionbox}[Varianta clasica]
+\begin{lstlisting}[style=codequest]
+pentru i de la 1 la 30 cu pas 1 executa
+    daca (i este multiplu de 3 si 5) atunci
+        afiseaza "FizzBuzz"
+    altfel daca (i este multiplu de 3) atunci
+        afiseaza "Fizz"
+    altfel daca (i este multiplu de 5) atunci
+        afiseaza "Buzz"
+    altfel
+        afiseaza i
+    sfarsit
+sfarsit
+\end{lstlisting}
+\end{missionbox}
+
+\begin{conceptbox}[Ordinea regulilor]
+Cazul ``si 3, si 5'' trebuie verificat primul. Altfel, valorile comune sunt capturate prea devreme de una dintre regulile simple.
+\end{conceptbox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Urmarire pe cazuri}
+  {Testam explicit valori cheie pentru a verifica ordinea corecta.}
+  {FizzBuzz 2 din 4}
+
+\begin{guidebox}[Tabel de control]
+Completeaza:
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Valoare & Regula activa & Output & De ce \\
+\midrule
+3 & & & \\
+5 & & & \\
+15 & & & \\
+18 & & & \\
+20 & & & \\
+30 & & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\AnswerSpace{6}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Scor si variatii}
+  {Acum adaugi punctaj si reguli noi fara sa pierzi claritatea.}
+  {FizzBuzz 3 din 4}
+
+\begin{solobox}[FizzBuzz cu punctaj]
+Construieste varianta:
+\begin{itemize}
+\item \texttt{Fizz} = 1 punct;
+\item \texttt{Buzz} = 1 punct;
+\item \texttt{FizzBuzz} = 3 puncte.
+\end{itemize}
+La final afiseaza scorul total.
+\AnswerSpace{8}
+\end{solobox}
+
+\begin{solobox}[Ping/Pong]
+Propune regula:
+\begin{itemize}
+\item \texttt{Ping} pentru multiplii lui 4;
+\item \texttt{Pong} pentru multiplii lui 6;
+\item \texttt{PingPong} pentru multiplii ambilor.
+\end{itemize}
+\AnswerSpace{7}
+\end{solobox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Pagina de rationament}
+  {Scrii explicatia regulilor, nu doar codul final.}
+  {FizzBuzz 4 din 4}
+
+\begin{solobox}[Explica ordinea]
+In 6-8 randuri, explica:
+\begin{enumerate}
+\item de ce exista un caz special combinat;
+\item de ce ordinea verificarilor poate strica rezultatul;
+\item cum ai testa rapid daca varianta ta este corecta.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\clearpage

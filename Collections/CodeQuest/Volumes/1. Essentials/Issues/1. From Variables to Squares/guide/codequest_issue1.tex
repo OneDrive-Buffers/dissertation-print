@@ -1,0 +1,248 @@
+% Code Quest – Algorithms World – Level 1 Issue 1
+% Această fișă LaTeX reprezintă structura completă a primului număr
+% „CALCULATORUL NU ŞTIE SĂ NUMERE”. Include atât text narativ cât şi
+% exerciții de diverse tipuri. Poți compila acest fișier cu pdflatex.
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+
+% Definim stilul pentru cod C++
+\lstdefinestyle{cpp}{
+  language=C++,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  tabsize=2
+}
+
+% Cutii personalizate pentru diverse blocuri pedagogice
+\newtcolorbox{missionbox}[1][]{title=#1, colback=blue!5, colframe=blue!40, boxrule=1pt, arc=2mm, fonttitle=\bfseries}
+\newtcolorbox{tryit}[1][]{title=#1, colback=green!5, colframe=green!40, boxrule=1pt, arc=2mm, fonttitle=\bfseries}
+\newtcolorbox{examplebox}[1][]{title=#1, colback=yellow!5, colframe=yellow!40, boxrule=1pt, arc=2mm, fonttitle=\bfseries}
+
+\title{Code Quest -- Lumea Algoritmilor\\Nivelul 1 -- Edi\c{t}ia 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+  {\Large \textbf{Calculatorul nu \c{s}tie s\u{a} numere}}\\[0.5em]
+  {\small O lec\c{t}ie de la variabile p\^an\u{a} la p\u{a}trate}
+\end{center}
+
+\section*{Introducere}
+Calculatorul nu \c{s}tie s\u{a} numere f\u{a}r\u{a} ajutorul programatorului. El \c{s}tie doar s\u{a} \c{t}in\u{a} minte numere \c{s}i s\u{a} fac\u{a} aritmetic\u{a} simpl\u{a}. Pentru a-l \^{i}nv\u{a}\c{t}a s\u{a} numere, vom descoperi variabilele, operatorii aritmetici, structurile de control \c{s}i modul \^{i}n care putem construi forme pe un ecran, exact ca \^{i}n Minecraft.
+
+\begin{missionbox}[Misiunea ta]
+\textbf{Scopul acestei edi\c{t}ii}: vei \^{i}nv\u{a}\c{t}a s\u{a} programezi un calculator s\u{a} numere \c{s}i s\u{a} deseneze p\u{a}trate folosind bucle. Vei porni de la no\c{t}iuni de baz\u{a} despre variabile \c{s}i vei ajunge la dublu \texttt{for} \c{s}i diagone. La final, vei fi capabil s\u{a} construie\c{s}ti un render de p\u{a}trat \^{i}ntr-un sistem de coordonate.
+\end{missionbox}
+
+\section*{Memoria \c{s}i variabilele}
+Variabilele sunt zone de memorie \^{i}n care calculatoarele stocheaz\u{a} date. Cel mai des utilizat tip este \texttt{int}, care reprezint\u{a} un num\u{a}r \^{i}ntreg (pozitiv sau negativ, f\u{a}r\u{a} zecimale).
+
+\begin{examplebox}[Exemplu de declarare de variabile]
+\begin{lstlisting}[style=cpp]
+int a = 1;
+int b = 10;
+int i = 0;
+\end{lstlisting}
+\end{examplebox}
+
+\begin{tryit}[\^{I}ncearc\u{a} singur]
+Declar\u{a} trei variabile \^{i}ntregi: \texttt{x}, \texttt{y} \c{s}i \texttt{scor} \c{s}i ini\c{t}ializeaz\u{a}-le cu valorile \texttt{5}, \texttt{12} \c{s}i \texttt{0}. Scrie codul t\u{a}u mai jos:
+\end{tryit}
+
+\section*{Operatori aritmetici}
+Folosim operatori aritmetici pentru a modifica valorile variabilelor.
+
+\begin{examplebox}[Incrementare \c{s}i decrementare]
+\begin{lstlisting}[style=cpp]
+i = i + 1;   // cre\c{s}te i cu 1
+i += 1;      // cre\c{s}te i cu 1
+i++;         // cre\c{s}te i cu 1
+
+i = i - 1;   // scade i cu 1
+i -= 1;      // scade i cu 1
+i--;         // scade i cu 1
+\end{lstlisting}
+\end{examplebox}
+
+\begin{tryit}[Exerci\c{t}iu rapid]
+Dac\u{a} \texttt{i = 7}, care va fi valoarea lui \texttt{i} dup\u{a} fiecare dintre instruc\c{t}iunile de mai jos?
+\begin{enumerate}
+\item \texttt{i++;}
+\item \texttt{i += 3;}
+\item \texttt{i--;}
+\end{enumerate}
+\end{tryit}
+
+\section*{Structuri de control}
+Calculatorul poate "s\u{a}r\u{a}" la alte instruc\c{t}iuni, ceea ce permite controlul fluxului programului. Cea mai simpl\u{a} structur\u{a} de control este condi\c{t}ionala \texttt{if}.
+
+\begin{examplebox}[Structura \texttt{if}]
+\begin{lstlisting}[style=cpp]
+if(i <= 10) {
+    cout << i;
+}
+\end{lstlisting}
+Instruc\c{t}iunea \texttt{cout << i;} se execut\u{a} doar dac\u{a} condi\c{t}ia \texttt{i <= 10} este adev\u{a}rat\u{a}.
+\end{examplebox}
+
+\begin{tryit}[Condi\c{t}ii]
+Scrie o instruc\c{t}iune \texttt{if} care verific\u{a} dac\u{a} variabila \texttt{x} este pozitiv\u{a}. Dac\u{a} este, afiseaz\u{a} mesajul "num\u{a}r pozitiv".
+\end{tryit}
+
+\section*{Bucle \texttt{while}}
+O bucl\u{a} permite repetarea instruc\c{t}iunilor c\u{a}t timp o condi\c{t}ie este adev\u{a}rat\u{a}.
+
+\begin{examplebox}[Buclele \texttt{while}]
+\begin{lstlisting}[style=cpp]
+int i = 1;
+while(i <= 10) {
+    cout << i << " ";
+    i++;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{tryit}[Num\u{a}rare cu \texttt{while}]
+Modific\u{a} programul de mai sus astfel \^{i}nc\u{a}t s\u{a} afiseze numerele de la \texttt{1} la \texttt{20}.
+\end{tryit}
+
+\section*{Cum num\u{a}r\u{a}m?}
+Pentru a programa calculatorul s\u{a} numere, trebuie s\u{a} definim trei valori:
+\begin{enumerate}
+\item De unde s\u{a} \^{i}nceap\u{a} – \texttt{int i = 1;}
+\item C\u{a}t timp s\u{a} numere – \texttt{while(i <= 10)}
+\item Cu ce pas s\u{a} numere – \texttt{i++;}
+\end{enumerate}
+
+\section*{Bucle \texttt{for}}
+Structura \texttt{for} este o form\u{a} compact\u{a} de bucl\u{a}.
+
+\begin{examplebox}[Structura \texttt{for}]
+\begin{lstlisting}[style=cpp]
+for(int i = 1; i <= 10; i++) {
+    cout << i << " ";
+}
+\end{lstlisting}
+Aceasta echivaleaz\u{a} cu:
+\begin{lstlisting}[style=cpp]
+int i = 1;
+while(i <= 10) {
+    cout << i << " ";
+    i++;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{tryit}[Parcurgere cu \texttt{for}]
+Scrie un program care afiseaz\u{a} numerele pare de la \texttt{2} la \texttt{20} folosind o bucl\u{a} \texttt{for}.
+\end{tryit}
+
+\section*{Bucl\u{a} \texttt{for} combinat\u{a} cu \texttt{if}}
+Putem combina structuri pentru a realiza comportamente mai complexe. Un exemplu clasic este FizzBuzz:
+
+\begin{examplebox}[FizzBuzz]
+\begin{lstlisting}[style=cpp]
+for(int i = 1; i <= n; i++) {
+    if(i % 3 == 0 && i % 5 == 0) {
+        cout << "FizzBuzz";
+    } else if(i % 3 == 0) {
+        cout << "Fizz";
+    } else if(i % 5 == 0) {
+        cout << "Buzz";
+    } else {
+        cout << i;
+    }
+    cout << " ";
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{tryit}[Exerci\c{t}iu FizzBuzz]
+Modific\u{a} programul \texttt{for} astfel \^{i}nc\u{a}t s\u{a} afiseze:
+\begin{itemize}
+\item "Fizz" pentru multiplii de 3;
+\item "Buzz" pentru multiplii de 5;
+\item "FizzBuzz" pentru multiplii de 3 \c{s}i 5;
+\item altfel num\u{a}rul \^{i}n sine.
+\end{itemize}
+\end{tryit}
+
+\section*{Bucle \^{i}mbricate: dublu \texttt{for}}
+Pentru a desena forme 2D (cum ar fi un p\u{a}trat) avem nevoie de dou\u{a} bucle: una pentru r\u{a}nduri \c{s}i una pentru coloane.
+
+\begin{examplebox}[P\u{a}trat simplu]
+\begin{lstlisting}[style=cpp]
+for(int linie = 1; linie <= 5; linie++) {
+    for(int coloana = 1; coloana <= 5; coloana++) {
+        cout << "#";
+    }
+    cout << endl;
+}
+\end{lstlisting}
+Output-ul este:
+\begin{verbatim}
+#####
+#####
+#####
+#####
+#####
+\end{verbatim}
+\end{examplebox}
+
+\begin{tryit}[Deseneaz\u{a} un p\u{a}trat]
+Scrie un program care deseneaz\u{a} un p\u{a}trat de dimensiune \texttt{n x n} folosind simbolul \texttt{*}. Alege tu dimensiunea \texttt{n}.
+\end{tryit}
+
+\section*{Diagonalele unui p\u{a}trat}
+Pentru un p\u{a}trat de m\u{a}rime \texttt{n x n}, elementele aflate pe diagonala principal\u{a} \^{i}ndeplinesc condi\c{t}ia \texttt{linie == coloana}. Pe diagonala secundar\u{a}, condi\c{t}ia este \texttt{linie + coloana == n + 1}.
+
+\begin{tryit}[Diagona Principal\u{a}]
+Scrie un program care afiseaz\u{a} un p\u{a}trat \texttt{n x n} \^{i}n care doar elementele de pe diagonala principal\u{a} sunt \texttt{*}, iar restul \texttt{.}.
+\end{tryit}
+
+\begin{tryit}[Diagona secundar\u{a}]
+Scrie un program care afiseaz\u{a} un p\u{a}trat \texttt{n x n} \^{i}n care doar elementele de pe diagonala secundar\u{a} sunt \texttt{*}, iar restul \texttt{.}.
+\end{tryit}
+
+\section*{Forma final\u{a}: p\u{a}trat cu margini \c{s}i diagonale}
+Combin\u{a} condi\c{t}iile pentru a desena un p\u{a}trat care are:
+\begin{itemize}
+\item \# pe margini;
+\item * pe diagonala principal\u{a};
+\item + pe diagonala secundar\u{a};
+\item . pe restul.
+\end{itemize}
+
+\begin{tryit}[Problema final\u{a}]
+Se cite\c{s}te \texttt{n}. Deseneaz\u{a} p\u{a}tratul \texttt{n x n} urm\u{a}nd regulile de mai sus. Aminte\c{s}te-\c{t}i priorit\u{a}\c{t}ile: mai \^{i}nt\u{a}i marginea, apoi diagonalele.
+\end{tryit}
+
+\section*{Concluzie}
+Prin aceast\u{a} lec\c{t}ie am \^{i}nv\u{a}\c{t}at cum putem \^{i}nv\u{a}\c{t}a calculatorul s\u{a} numere \c{s}i s\u{a} deseneze forme prin folosirea variabilelor, operatorilor aritmetici, structurilor de control \texttt{if}, buclelor \texttt{while} \c{s}i \texttt{for}. Aceste concepte stau la baza program\u{a}rii de jocuri, graficii \c{s}i multor algoritmi.
+
+\end{document}

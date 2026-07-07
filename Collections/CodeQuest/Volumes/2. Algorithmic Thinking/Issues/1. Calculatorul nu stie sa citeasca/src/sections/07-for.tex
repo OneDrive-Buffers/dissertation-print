@@ -1,0 +1,91 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 6}{Predarea algoritmului de descompunere}{L6 • P1}
+
+\begin{missionbox}[Algoritmul-cheie]
+  Acum le legam pe toate: operatorii, conditiile si repetitia. Vrem un algoritm care sa citeasca un numar si sa il desfaca in cifre, una cate una.
+
+  Acesta este momentul in care problema incepe sa semene cu felul in care calculatorul citeste de fapt informatia: nu dintr-o privire, ci pas cu pas, bucata cu bucata.
+\end{missionbox}
+
+\begin{conceptbox}[Schema completa]
+\begin{lstlisting}[style=codequest]
+cat timp (n != 0) executa
+    uc = n % 10;
+    // aici folosim cifra extrasa
+    n = n / 10;
+sfarsit cat timp
+\end{lstlisting}
+\end{conceptbox}
+
+\begin{guidebox}[Primul rol concret]
+  Daca in locul comentariului scriem \texttt{afiseaza uc}, atunci algoritmul va afisa cifrele numarului in ordine inversa.
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 6}{Prima aplicatie: numararea cifrelor}{L6 • P2}
+
+\begin{examplebox}[Algoritm complet]
+\begin{lstlisting}[style=codequest]
+int n, cnt = 0;
+citeste n;
+
+daca (n == 0) atunci
+    cnt = 1;
+altfel
+    cat timp (n != 0) executa
+        cnt = cnt + 1;
+        n = n / 10;
+    sfarsit cat timp
+sfarsit daca
+
+afiseaza cnt;
+\end{lstlisting}
+\end{examplebox}
+
+\begin{guidebox}[Exercitii ghidate]
+  1. De ce \texttt{cnt} porneste de la 0?
+
+  2. De ce \texttt{0} este tratat separat?
+
+  3. Cate iteratii are bucla pentru \texttt{n = 3408}?
+  \AnswerSpace{5}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 6}{Semi-ghidat}{L6 • P3}
+
+\begin{solobox}[Completeaza lipsurile]
+\begin{lstlisting}[style=codequest]
+int n, cnt = 0;
+citeste n;
+
+daca (n == 0) atunci
+    cnt = ______;
+altfel
+    cat timp (__________) executa
+        cnt = cnt + 1;
+        n = ________;
+    sfarsit cat timp
+sfarsit daca
+\end{lstlisting}
+\end{solobox}
+
+\begin{solobox}[Exercitiu independent scurt]
+  Scrie in cuvinte ce face algoritmul de mai sus.
+  \AnswerSpace{4}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 6}{Independent}{L6 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Scrie singur algoritmul care afiseaza toate cifrele unui numar in ordine inversa.
+
+  2. Arata pe scurt ce afiseaza pentru \texttt{n = 5021}.
+
+  3. Explica de ce aceasta schema este fundamentala pentru tot ce urmeaza.
+  \AnswerSpace{8}
+\end{solobox}

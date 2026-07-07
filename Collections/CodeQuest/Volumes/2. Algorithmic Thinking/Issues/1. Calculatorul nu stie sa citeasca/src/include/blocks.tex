@@ -1,0 +1,264 @@
+\newtcolorbox{missionbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqcyan!80!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm,
+  left=2.5mm,
+  right=2.5mm,
+  overlay unbroken={
+    \fill[cqtoolbar] ([yshift=-7mm]frame.north west) rectangle (frame.north east);
+  }
+}
+
+\newtcolorbox{conceptbox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqlime!60!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{examplebox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqyellow!55!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{guidebox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqyellow!70!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{semibox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqcyan!80!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{solobox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqlime!55!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{machinebox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqcodebg,
+  colframe=cqcyan,
+  coltitle=white,
+  fonttitle=\bfseries,
+  fontupper=\small\color{white},
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{checkpointbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqline,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{languagebox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqdarkpanel,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title=#1,
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{bossbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqcodebg,
+  colframe=cqyellow,
+  coltitle=white,
+  fonttitle=\bfseries,
+  fontupper=\small\color{white},
+  title=#1,
+  boxrule=1pt,
+  arc=2mm
+}
+
+\newcommand{\SimulatorCard}[4]{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=cqcodebg,
+    colframe=cqcyan,
+    boxrule=1pt,
+    arc=2mm,
+    title={\small\ttfamily\bfseries [SIMULATOR] #2},
+    fonttitle=\small\ttfamily
+  ]
+    \begin{minipage}{0.75\linewidth}
+      \small\color{cqtext}
+      \textbf{Ce vezi:} #3\\[0.5em]
+      \textbf{Ce încerci:} #4
+    \end{minipage}
+    \begin{minipage}{0.2\linewidth}
+      \centering
+      \QRCodePlaceholder\\
+      \tiny\ttfamily #1
+    \end{minipage}
+  \end{tcolorbox}
+}
+
+\newcommand{\BlocklyExperiment}[3]{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=cqpanel,
+    colframe=cqmagenta,
+    boxrule=1pt,
+    arc=2mm,
+    title={\small\ttfamily\bfseries [EXPERIMENT BLOCKLY] #2},
+    fonttitle=\small\ttfamily,
+    coltitle=cqink
+  ]
+    \small\color{cqink}
+    #3\\[0.8em]
+    \begin{center}
+      \QRCodePlaceholder\\
+      \tiny\ttfamily #1
+    \end{center}
+  \end{tcolorbox}
+}
+
+\newcommand{\SyntaxCheck}[5]{%
+  \begin{languagebox}[Sintaxă comparativă: #1]
+    \scriptsize
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+      \hline
+      \textbf{Pseudocod} & \textbf{C++} & \textbf{Python} & \textbf{Java} \\
+      \hline
+      #2 & #3 & #4 & #5 \\
+      \hline
+    \end{tabularx}
+  \end{languagebox}
+}
+
+\newcommand{\IssueBanner}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    colback=cqpanel,
+    colframe=cqcyan,
+    boxrule=1pt,
+    arc=3mm,
+    overlay={
+      \fill[cqtoolbar] ([yshift=-8mm]frame.north west) rectangle (frame.north east);
+      \node[anchor=west, text=cqcyan, font=\ttfamily\scriptsize\bfseries]
+        at ([xshift=2mm,yshift=-4mm]frame.north west) {logic://session};
+      \node[anchor=east, text=cqmuted, font=\ttfamily\scriptsize]
+        at ([xshift=-2mm,yshift=-4mm]frame.north east) {normal mode};
+    }
+  ]
+    \vspace{4mm}
+    {\ttfamily\small\color{cqmagenta}>\_ scanam cifre, reconstruim oglinda}\par
+    \vspace{0.25em}
+    {\Huge\bfseries\color{cqink} #1}\par
+    \vspace{0.25em}
+    {\large\color{cqdarkpanel} #2}
+  \end{tcolorbox}
+}
+
+\newcommand{\PageHeader}[3]{%
+  \IssueBanner{#1}{#2}
+  \begin{flushright}
+    \textcolor{cqmuted}{\small\ttfamily\bfseries #3}
+  \end{flushright}
+}
+
+\newcommand{\FieldLine}[1]{%
+  \par\noindent\textbf{#1}\dotfill\par
+}
+
+\newcount\cqanswercount
+\newcommand{\AnswerLine}{\par\noindent\color{cqline}\rule{\linewidth}{0.5pt}\par\vspace{0.7em}}
+\newcommand{\AnswerSpace}[1]{%
+  \cqanswercount=0
+  \loop\ifnum\cqanswercount<#1
+    \advance\cqanswercount by 1
+    \AnswerLine
+  \repeat
+}
+
+\newcommand{\QRCodePlaceholder}{%
+  \begin{tikzpicture}[x=1.7mm,y=1.7mm]
+    \draw[cqcyan, line width=0.6pt] (0,0) rectangle (14,14);
+    \fill[cqcodebg] (1,1) rectangle (5,5);
+    \fill[white] (1.8,1.8) rectangle (4.2,4.2);
+    \fill[cqcodebg] (2.5,2.5) rectangle (3.5,3.5);
+    \fill[cqcodebg] (9,1) rectangle (13,5);
+    \fill[white] (9.8,1.8) rectangle (12.2,4.2);
+    \fill[cqcodebg] (10.5,2.5) rectangle (11.5,3.5);
+    \fill[cqcodebg] (1,9) rectangle (5,13);
+    \fill[white] (1.8,9.8) rectangle (4.2,12.2);
+    \fill[cqcodebg] (2.5,10.5) rectangle (3.5,11.5);
+    \foreach \x/\y in {
+      7/2,8/2,7/3,10/7,11/7,10/8,7/9,8/10,9/9,10/10,11/11,12/10,7/12,9/12,12/12
+    }{
+      \fill[cqcodebg] (\x,\y) rectangle ++(1,1);
+    }
+  \end{tikzpicture}%
+}

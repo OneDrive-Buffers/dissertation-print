@@ -1,0 +1,163 @@
+\SetPageTheme{story}
+\PageHeader
+  {Structura cat timp}
+  {Repetitia apare atunci cand un proces trebuie sa continue pana cand starea jocului se schimba suficient.}
+  {Cat timp 1 din 6}
+
+\begin{missionbox}[Unde o intalnim]
+Intr-un joc, structura \texttt{cat timp} apare natural in multe locuri:
+\begin{itemize}
+\item un cronometru merge pana la zero;
+\item un efect de protectie ramane activ cat timp mai are durata;
+\item valurile de inamici continua cat timp nu s-a atins limita;
+\item o animatie se deruleaza cat timp nu s-a terminat traseul.
+\end{itemize}
+
+Ca sa o programezi bine, ai nevoie de trei piese: start, conditie de continuare si pas de actualizare.
+\end{missionbox}
+
+\BlocklyExperiment{cq-i1-while-counter}{Numaratoare controlata}{Leaga valoarea initiala, conditia si actualizarea, apoi observa de ce o bucla buna trebuie sa se apropie de oprire.}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {Anatomia unei bucle}
+  {Verific, execut, actualizez, ma intorc la verificare.}
+  {Cat timp 2 din 6}
+
+\begin{examplebox}[Modelul minim]
+\begin{lstlisting}[style=codequest]
+i <- 1
+cat timp (i <= 5) executa
+    afiseaza i
+    i <- i + 1
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Cum o urmarim corect]
+Nu sarim direct la raspunsul final. Urmarim bucla iteratie cu iteratie:
+\begin{enumerate}
+\item verificam daca regula este adevarata;
+\item executam corpul;
+\item modificam valoarea care controleaza bucla;
+\item revenim la conditie.
+\end{enumerate}
+\end{missionbox}
+
+\begin{guidebox}[Trace complet]
+Completeaza tabelul:
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Iteratia & i la intrare & Ce se afiseaza & i dupa actualizare \\
+\midrule
+1 & & & \\
+2 & & & \\
+3 & & & \\
+4 & & & \\
+5 & & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\AnswerSpace{5}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Cum se opreste}
+  {O bucla sanatoasa nu doar porneste corect. Ea se si termina corect.}
+  {Cat timp 3 din 6}
+
+\begin{conceptbox}[Riscul principal]
+Daca pasul nu duce variabila mai aproape de oprire, bucla poate continua la nesfarsit. Asta nu este doar o mica greseala de calcul. Intr-un joc real poate bloca logica, poate consuma resurse si poate face experienta inutilizabila.
+\end{conceptbox}
+
+\begin{semibox}[Bucla se opreste sau nu?]
+Analizeaza fiecare situatie:
+\begin{enumerate}
+\item \texttt{i <- 1}, conditie \texttt{i <= 5}, pas \texttt{i <- i + 1}
+\item \texttt{i <- 1}, conditie \texttt{i <= 5}, pas \texttt{i <- i - 1}
+\item \texttt{timp <- 10}, conditie \texttt{timp > 0}, pas \texttt{timp <- timp - 2}
+\item \texttt{energie <- 8}, conditie \texttt{energie >= 0}, pas \texttt{energie <- energie - 3}
+\end{enumerate}
+Pentru fiecare, spune daca bucla se opreste si de ce.
+\AnswerSpace{8}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Cronometre si cooldown-uri}
+  {Aici structura cat timp incepe sa semene cu adevarata logica de gameplay.}
+  {Cat timp 4 din 6}
+
+\begin{guidebox}[Trei probleme de joc]
+Pentru fiecare situatie, scrie:
+\begin{itemize}
+\item valoarea initiala;
+\item conditia de continuare;
+\item actualizarea de la fiecare pas.
+\end{itemize}
+
+\begin{enumerate}
+\item Un cronometru care porneste la 30 si ajunge la 0.
+\item Un cooldown care porneste la 5 si scade pana cand abilitatea devine disponibila.
+\item Un numarator de valuri care merge de la 1 la 8.
+\end{enumerate}
+\AnswerSpace{10}
+\end{guidebox}
+
+\begin{semibox}[Reflectie scurta]
+Care dintre cele trei exemple ti se pare cel mai natural pentru \texttt{cat timp} si de ce?
+\AnswerSpace{4}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Simulam ritmul buclei}
+  {Cand schimbi pasul sau conditia, vezi imediat diferenta dintre o repetitie eficienta si una stangace.}
+  {Cat timp 5 din 6}
+
+\SimulatorCard{cq-i1-while-counter}{Contor repetitiv}{Relatia dintre conditie, actualizare si numarul total de iteratii.}{Ruleaza aceeasi bucla cu pasi diferiti si compara cate iteratii apar, ce valori sunt afisate si unde se opreste procesul.}
+
+\begin{semibox}[Dupa scanare]
+\begin{enumerate}
+\item Ce pas produce o parcurgere lenta, dar foarte precisa?
+\item Ce pas produce o parcurgere rapida, dar poate sari valori importante?
+\item Cum ai alege pasul pentru un cronometru si cum l-ai alege pentru deplasarea unui obiect pe ecran?
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Buclele tale}
+  {Acum scrii singur bucle complete si justifici de ce sunt sigure.}
+  {Cat timp 6 din 6}
+
+\SyntaxCheck{cat-timp}
+
+\begin{solobox}[Set complet]
+\begin{enumerate}
+\item Scrie o bucla care afiseaza: 5, 10, 15, 20, 25.
+\item Scrie o bucla descrescatoare pentru numaratoarea: 12, 9, 6, 3, 0.
+\item Scrie o bucla pentru un cooldown care se opreste exact la zero, fara sa coboare sub zero.
+\item Explica in 4--5 randuri ce face diferenta dintre o bucla care functioneaza corect si una care se poate bloca.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\begin{checkpointbox}[Ideea care ramane]
+Structura \texttt{cat timp} este forma cea mai clara pentru procese dependente de stare: timp ramas, energie ramasa, progres atins sau resurse inca disponibile.
+\end{checkpointbox}
+
+\clearpage

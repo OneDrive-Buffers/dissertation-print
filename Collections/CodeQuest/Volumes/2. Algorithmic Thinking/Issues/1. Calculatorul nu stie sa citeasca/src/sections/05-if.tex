@@ -1,0 +1,91 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 4}{Ce putem decide din ultima cifra}{L4 • P1}
+
+\begin{missionbox}[De la operatie la decizie]
+  O operatie devine cu adevarat utila atunci cand putem lua o decizie pe baza ei. Ultima cifra spune multe despre un numar: daca este par, daca se termina in 0, daca este divizibil cu 5 sau daca are o anumita terminatie.
+
+  In prelucrarea informatiei, aceste verificari rapide sunt pretioase. Ele ne permit sa filtram date, sa verificam reguli si sa alegem rapid ce facem mai departe.
+\end{missionbox}
+
+\begin{conceptbox}[Structura \texttt{daca}]
+\begin{lstlisting}[style=codequest]
+daca (conditie) atunci
+    instructiuni
+altfel
+    alte instructiuni
+sfarsit daca
+\end{lstlisting}
+\end{conceptbox}
+
+\begin{guidebox}[Prima aplicatie]
+  Completeaza conditia:
+\begin{lstlisting}[style=codequest]
+daca (________________) atunci
+    afiseaza "numarul este par"
+sfarsit daca
+\end{lstlisting}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 4}{Reguli pe care le vedem imediat}{L4 • P2}
+
+\begin{examplebox}[Reguli utile]
+  \begin{itemize}
+    \item \texttt{n \% 2 == 0} inseamna numar par;
+    \item \texttt{n \% 10 == 0} inseamna numarul se termina in 0;
+    \item \texttt{n \% 10 == 7} inseamna numarul se termina in 7;
+    \item \texttt{n \% 10 == 0 sau n \% 10 == 5} inseamna numarul este divizibil cu 5.
+  \end{itemize}
+\end{examplebox}
+
+\begin{guidebox}[Exercitii ghidate]
+  Scrie conditia pentru:
+  \begin{enumerate}
+    \item numarul se termina in 8;
+    \item numarul se termina in 0;
+    \item numarul este impar;
+    \item numarul este divizibil cu 5.
+  \end{enumerate}
+  \AnswerSpace{6}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 4}{Semi-ghidat}{L4 • P3}
+
+\begin{solobox}[Aplicatii]
+  1. Completeaza:
+\begin{lstlisting}[style=codequest]
+daca (________________) atunci
+    afiseaza "se termina in 3"
+altfel
+    afiseaza "nu se termina in 3"
+sfarsit daca
+\end{lstlisting}
+
+  2. Scrie un algoritm care afiseaza daca un numar se termina sau nu in 5.
+\end{solobox}
+
+\begin{solobox}[Independent scurt]
+  Explica de ce ne este suficienta doar ultima cifra pentru a verifica divizibilitatea cu 2 sau cu 5.
+  \AnswerSpace{4}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 4}{Independent}{L4 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Scrie trei conditii diferite care folosesc \texttt{n \% 10}.
+
+  2. Construieste un mic algoritm care afiseaza:
+  \begin{itemize}
+    \item \texttt{PAR} daca numarul este par;
+    \item \texttt{ZERO} daca se termina in 0;
+    \item \texttt{ALTFEL} in celelalte cazuri.
+  \end{itemize}
+
+  3. In ce fel te ajuta aceste verificari rapide sa filtrezi date?
+  \AnswerSpace{8}
+\end{solobox}

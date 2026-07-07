@@ -1,0 +1,90 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 2}{Ce se intampla cand impartim la 10}{L2 • P1}
+
+\begin{missionbox}[De ce tocmai 10]
+  Sistemul nostru de numeratie este zecimal. Asta inseamna ca fiecare cifra are legatura cu puterile lui 10. De aceea, impartirea la 10 produce un efect special: nu doar micsoreaza numarul, ci il reorganizeaza intr-un mod foarte util pentru algoritmi.
+
+  Cand calculatorul trebuie sa citeasca un numar cifra cu cifra, impartirea la 10 devine una dintre cele mai importante operatii din toata lectia.
+\end{missionbox}
+
+\begin{conceptbox}[Regula de aur]
+  Pentru orice numar natural \texttt{n}:
+  \begin{itemize}
+    \item \texttt{n \% 10} da ultima cifra;
+    \item \texttt{n / 10} elimina ultima cifra.
+  \end{itemize}
+\end{conceptbox}
+
+\begin{guidebox}[Primul pas]
+  Pentru \texttt{n = 538}, ultima cifra este \hrulefill iar dupa eliminare ramane \hrulefill
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 2}{Exemple clare pe numere}{L2 • P2}
+
+\begin{examplebox}[Exemple]
+  \begin{itemize}
+    \item \texttt{1234 \% 10 = 4}
+    \item \texttt{1234 / 10 = 123}
+    \item \texttt{980 \% 10 = 0}
+    \item \texttt{980 / 10 = 98}
+    \item \texttt{7 \% 10 = 7}
+    \item \texttt{7 / 10 = 0}
+  \end{itemize}
+\end{examplebox}
+
+\begin{guidebox}[Exercitii ghidate]
+  Completeaza:
+  \begin{itemize}
+    \item ultima cifra a lui 846 este \hrulefill
+    \item dupa eliminarea ultimei cifre din 846 ramane \hrulefill
+    \item ultima cifra a lui 1205 este \hrulefill
+    \item dupa eliminarea ultimei cifre din 1205 ramane \hrulefill
+  \end{itemize}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 2}{Observam tipare}{L2 • P3}
+
+\begin{solobox}[Exercitii semi-ghidate]
+  1. Completeaza tabelul:
+  \begin{center}
+  \begin{tabularx}{\linewidth}{|X|X|X|}
+    \hline
+    \textbf{n} & \textbf{n \% 10} & \textbf{n / 10} \\
+    \hline
+    451 & & \\
+    \hline
+    230 & & \\
+    \hline
+    9007 & & \\
+    \hline
+  \end{tabularx}
+  \end{center}
+
+  2. Scrie in cuvinte ce se intampla cu numarul atunci cand facem \texttt{/ 10}.
+\end{solobox}
+
+\begin{solobox}[Independent scurt]
+  Inventeaza doua numere proprii si explica in doua etape cum afli ultima cifra si ce ramane dupa eliminare.
+  \AnswerSpace{4}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 2}{Lucram fara sprijin}{L2 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Calculeaza pentru fiecare numar ultima cifra si numarul ramas:
+  \begin{itemize}
+    \item 6729
+    \item 4000
+    \item 81
+    \item 5
+  \end{itemize}
+
+  2. Explica de ce aceasta operatie este utila intr-un algoritm care vrea sa citeasca toate cifrele unui numar.
+  \AnswerSpace{8}
+\end{solobox}

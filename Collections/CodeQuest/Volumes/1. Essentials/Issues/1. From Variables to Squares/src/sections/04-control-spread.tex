@@ -1,0 +1,129 @@
+\SetPageTheme{story}
+\clearpage
+\thispagestyle{empty}
+
+\begin{center}
+{\Huge\bfseries STRUCTURI DE CONTROL}\par
+\vspace{0.6em}
+{\large Programul nu merge mereu pe acelasi drum. Uneori asteapta, verifica, alege sau revine.}
+\end{center}
+
+\vspace{0.8em}
+
+\begin{tcolorbox}[colback=white!8!cqink,colframe=cqcyan,coltitle=white,coltext=white,fonttitle=\bfseries,title=Modelul pe care il urmarim]
+Un automat de bauturi este un exemplu foarte bun pentru structurile de control. El:
+\begin{enumerate}
+\item asteapta o moneda;
+\item verifica daca suma este suficienta;
+\item alege daca ofera produsul sau cere completare;
+\item revine in starea de asteptare dupa ce actiunea s-a incheiat.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{0.6em}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm, >=Latex, every node/.style={font=\small}]
+  \node[draw, rounded corners, fill=white!10!cqink, text=white, minimum width=4.4cm, minimum height=1.0cm] (idle) {asteapta moneda};
+  \node[draw, rounded corners, fill=white!10!cqink, text=white, minimum width=4.4cm, minimum height=1.0cm, below=of idle] (sum) {verifica suma};
+  \node[draw, rounded corners, fill=white!10!cqink, text=white, minimum width=4.4cm, minimum height=1.0cm, below left=1.6cm and 2.3cm of sum] (more) {cere completare};
+  \node[draw, rounded corners, fill=white!10!cqink, text=white, minimum width=4.4cm, minimum height=1.0cm, below right=1.6cm and 2.3cm of sum] (vend) {elibereaza produsul};
+  \draw[->,cqcyan,very thick] (idle) -- node[right,text=white]{moneda introdusa} (sum);
+  \draw[->,cqmagenta,very thick] (sum) -- node[left,text=white]{insuficient} (more);
+  \draw[->,cqlime,very thick] (sum) -- node[right,text=white]{suficient} (vend);
+\end{tikzpicture}
+\end{center}
+
+\clearpage
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \draw[cqcyan, line width=2.8pt, ->]
+    ([xshift=1.6cm,yshift=-6.4cm]current page.north west)
+      .. controls ([xshift=8.3cm,yshift=-5.2cm]current page.north west)
+      and ([xshift=-4.0cm,yshift=-8.0cm]current page.north east)
+      .. ([xshift=1.2cm,yshift=-11.2cm]current page.east);
+  \draw[cqmagenta, line width=2.4pt, ->]
+    ([xshift=1.3cm,yshift=-13.0cm]current page.north west)
+      .. controls ([xshift=7.2cm,yshift=-14.6cm]current page.north west)
+      and ([xshift=-4.0cm,yshift=-15.0cm]current page.north east)
+      .. ([xshift=1.2cm,yshift=-17.0cm]current page.east);
+\end{tikzpicture}
+
+\begin{center}
+{\Large\bfseries Automatul revine mereu la o stare controlata}
+\end{center}
+
+\vspace{0.8em}
+
+\begin{tcolorbox}[colback=white!8!cqink,colframe=cqlime,coltitle=white,coltext=white,fonttitle=\bfseries,title=Cum traducem automatul in programare]
+\begin{enumerate}
+\item \textbf{Asteptarea} seamana cu o stare in care programul nu face nimic pana nu apare un eveniment.
+\item \textbf{Verificarea} seamana cu o structura \texttt{daca}: suma este suficienta sau nu.
+\item \textbf{Revenirea} seamana cu o repetitie: dupa fiecare actiune, automatul este gata sa primeasca o noua comanda.
+\end{enumerate}
+
+Exact aceasta combinatie de idee o vom regasi in jocuri: astepti o intrare, verifici o conditie, actualizezi starea, apoi revii la urmatorul pas.
+\end{tcolorbox}
+
+\vfill
+
+\begin{checkpointbox}[Fir pedagogic]
+In paginile urmatoare luam pe rand trei instrumente:
+\begin{itemize}
+\item \texttt{daca} pentru alegere;
+\item \texttt{cat timp} pentru repetitie condusa de o stare;
+\item \texttt{pentru} pentru parcurgere planificata.
+\end{itemize}
+\end{checkpointbox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Simularea deciziilor}
+  {Vedem concret cum se schimba traseul cand modificam o conditie.}
+  {Control}
+
+\SimulatorCard{cq-i1-if-branch}{Ramificare in timp real}{Cum acelasi cod intra pe ramura A sau B in functie de o conditie booleana.}{Comuta conditia dintre adevarat/fals, apoi noteaza ce bloc a rulat si ce variabila a fost actualizata.}
+
+\begin{guidebox}[Dupa scanare]
+\begin{enumerate}
+\item Ce variabila decide ramura?
+\item Ce schimbare ramane vizibila la finalul fiecarui drum?
+\item Ce regula ai adauga pentru a preveni un drum invalid?
+\end{enumerate}
+\AnswerSpace{6}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Tipuri de structuri, comparate}
+  {Comparatia clara te ajuta sa alegi structura potrivita pentru problema potrivita.}
+  {Control}
+
+\begin{conceptbox}[Comparatie rapida]
+\begin{tabularx}{\linewidth}{>{\bfseries}lX}
+\toprule
+Structura & Cand o alegi \\
+\midrule
+\texttt{daca} & Cand exista o conditie care poate schimba drumul. \\
+\texttt{cat timp} & Cand nu stii exact cate repetari vor fi, dar stii conditia de continuare. \\
+\texttt{pentru} & Cand stii startul, limita si pasul de parcurgere. \\
+\bottomrule
+\end{tabularx}
+\end{conceptbox}
+
+\begin{semibox}[Exercitiu de selectie]
+Pentru fiecare situatie, alege structura potrivita si explica in 1--2 randuri:
+\begin{enumerate}
+\item deschide usa doar daca ai cheie;
+\item numara secundele pana la zero;
+\item parcurge toate celulele de pe o linie de tabla.
+\end{enumerate}
+\AnswerSpace{7}
+\end{semibox}
+
+\clearpage

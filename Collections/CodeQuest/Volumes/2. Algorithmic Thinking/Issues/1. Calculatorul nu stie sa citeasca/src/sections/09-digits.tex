@@ -1,0 +1,80 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 8}{Verificarea palindromului si exercitii apropiate}{L8 • P1}
+
+\begin{missionbox}[Legam totul]
+  Acum avem toate piesele: stim sa extragem cifre, stim sa repetam, stim sa construim oglinditul. Mai ramane doar sa pastram numarul initial si sa facem comparatia finala.
+\end{missionbox}
+
+\begin{conceptbox}[Algoritmul de palindrom]
+\begin{lstlisting}[style=codequest]
+int n, copie, uc, ogl = 0;
+citeste n;
+copie = n;
+
+cat timp (n != 0) executa
+    uc = n % 10;
+    ogl = ogl * 10 + uc;
+    n = n / 10;
+sfarsit cat timp
+
+daca (ogl == copie) atunci
+    afiseaza "DA";
+altfel
+    afiseaza "NU";
+sfarsit daca
+\end{lstlisting}
+\end{conceptbox}
+
+\begin{guidebox}[Prima intrebare]
+  De ce avem nevoie de variabila \texttt{copie}?
+  \AnswerSpace{2}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 8}{Intelegem comparatia finala}{L8 • P2}
+
+\begin{examplebox}[Doua exemple]
+  \texttt{n = 1221} produce \texttt{ogl = 1221}, deci raspunsul este \texttt{DA}.
+
+  \texttt{n = 1231} produce \texttt{ogl = 1321}, deci raspunsul este \texttt{NU}.
+\end{examplebox}
+
+\begin{guidebox}[Exercitii ghidate]
+  1. Ce valoare va avea \texttt{ogl} pentru \texttt{n = 404}?
+
+  2. Ce raspuns se va afisa pentru \texttt{n = 909}?
+
+  3. Ce raspuns se va afisa pentru \texttt{n = 908}?
+  \AnswerSpace{5}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 8}{Exercitii apropiate algoritmului}{L8 • P3}
+
+\begin{solobox}[Semi-ghidat]
+  1. Scrie un algoritm care calculeaza suma cifrelor.
+
+  2. Scrie un algoritm care determina cifra maxima.
+
+  3. Scrie un algoritm care numara cate cifre pare are un numar.
+  \AnswerSpace{8}
+\end{solobox}
+
+\begin{guidebox}[Ideea comuna]
+  In toate aceste probleme scheletul buclei ramane acelasi. Se schimba doar ceea ce facem cu \texttt{uc}.
+\end{guidebox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 8}{Independent}{L8 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Scrie un algoritm care afiseaza toate numerele palindrom dintre 100 si 200.
+
+  2. Scrie un algoritm care spune daca un numar contine cifra 7.
+
+  3. Explica ce parti din schema de palindrom raman identice si ce parti se schimba.
+  \AnswerSpace{9}
+\end{solobox}

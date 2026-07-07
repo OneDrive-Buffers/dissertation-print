@@ -1,0 +1,322 @@
+\makeatletter
+
+\newtcolorbox{missionbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqcyan!80!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm,
+  left=2.5mm,
+  right=2.5mm
+}
+
+\newtcolorbox{conceptbox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqlime!60!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{examplebox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqyellow!55!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{guidebox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqyellow!70!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{semibox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqcyan!80!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{solobox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqlime!55!black,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{machinebox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqcodebg,
+  colframe=cqcyan,
+  coltitle=white,
+  fonttitle=\bfseries,
+  fontupper=\small\color{white},
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{checkpointbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqpanel,
+  colframe=cqline,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{languagebox}[1][]{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=cqdarkpanel,
+  coltitle=cqink,
+  coltext=cqink,
+  fonttitle=\bfseries,
+  fontupper=\small,
+  title={#1},
+  boxrule=0.9pt,
+  arc=2mm
+}
+
+\newtcolorbox{bossbox}[1][]{
+  enhanced,
+  breakable,
+  colback=cqcodebg,
+  colframe=cqyellow,
+  coltitle=white,
+  fonttitle=\bfseries,
+  fontupper=\small\color{white},
+  title={#1},
+  boxrule=1pt,
+  arc=2mm
+}
+
+\newcommand{\IssueBanner}[2]{%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    colback=cqpanel,
+    colframe=cqcyan!75!black,
+    boxrule=0.9pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.6mm,
+    overlay={
+      \fill[cqtoolbar] ([yshift=-6.8mm]frame.north west) rectangle (frame.north east);
+      \node[anchor=west, text=cqcyan, font=\ttfamily\scriptsize\bfseries]
+        at ([xshift=2mm,yshift=-3.4mm]frame.north west) {code quest | logic map};
+      \node[anchor=east, text=cqmuted, font=\ttfamily\scriptsize]
+        at ([xshift=-2mm,yshift=-3.4mm]frame.north east) {study mode};
+    }
+  ]
+    \vspace{2.7mm}
+    {\ttfamily\footnotesize\color{cqmagenta}>\_ urmarim logica jocului}\par
+    \vspace{0.15em}
+    {\LARGE\bfseries\color{cqink} #1}\par
+    \vspace{0.1em}
+    {\normalsize\color{cqdarkpanel} #2}
+  \end{tcolorbox}
+}
+
+\newcommand{\PageHeader}[3]{%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    colback=cqpanel,
+    colframe=cqcyan!70!black,
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.4mm,
+    bottom=1.4mm,
+    overlay={
+      \fill[cqtoolbar] ([yshift=-6.3mm]frame.north west) rectangle (frame.north east);
+      \node[anchor=west, text=cqcyan, font=\ttfamily\scriptsize\bfseries]
+        at ([xshift=2mm,yshift=-3.1mm]frame.north west) {code quest};
+    }
+  ]
+    \vspace{2.4mm}
+    {\Large\bfseries\color{cqink} #1}\par
+    \vspace{0.12em}
+    {\small\color{cqdarkpanel} #2}
+  \end{tcolorbox}
+}
+
+\newcommand{\FieldLine}[1]{%
+  \par\noindent\textbf{#1}\dotfill\par
+}
+
+\newcount\cqanswercount
+\newcommand{\AnswerLine}{\par\noindent\color{cqline}\rule{\linewidth}{0.5pt}\par\vspace{0.7em}}
+\newcommand{\AnswerSpace}[1]{%
+  \cqanswercount=0
+  \loop\ifnum\cqanswercount<#1
+    \advance\cqanswercount by 1
+    \AnswerLine
+  \repeat
+}
+
+\newcommand{\QRCodePlaceholder}{%
+  \begin{tikzpicture}[x=1.7mm,y=1.7mm]
+    \draw[cqcyan, line width=0.6pt] (0,0) rectangle (14,14);
+    \fill[cqcodebg] (1,1) rectangle (5,5);
+    \fill[white] (1.8,1.8) rectangle (4.2,4.2);
+    \fill[cqcodebg] (2.5,2.5) rectangle (3.5,3.5);
+    \fill[cqcodebg] (9,1) rectangle (13,5);
+    \fill[white] (9.8,1.8) rectangle (12.2,4.2);
+    \fill[cqcodebg] (10.5,2.5) rectangle (11.5,3.5);
+    \fill[cqcodebg] (1,9) rectangle (5,13);
+    \fill[white] (1.8,9.8) rectangle (4.2,12.2);
+    \fill[cqcodebg] (2.5,10.5) rectangle (3.5,11.5);
+    \fill[cqcodebg] (7,7) rectangle (10,10);
+    \fill[cqcodebg] (6,4) rectangle (7,5);
+    \fill[cqcodebg] (12,9) rectangle (13,10);
+  \end{tikzpicture}
+}
+
+\newcommand{\BlocklyExperiment}[3]{%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=cqmagenta,
+    boxrule=1pt,
+    arc=2mm,
+    title={Experiment Blockly: #2}
+  ]
+    \small #3
+    \begin{flushright}
+      \begin{tikzpicture}
+        \node[anchor=center] at (0,0) {\QRCodePlaceholder};
+        \node[anchor=north, font=\ttfamily\tiny, cqmuted] at (0,-1.3) {#1};
+      \end{tikzpicture}
+    \end{flushright}
+  \end{tcolorbox}
+}
+
+\newcommand{\SimulatorCard}[4]{%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=cqcyan,
+    title={Simulator interactiv: #2}
+  ]
+  \small
+  \textbf{Ce arata simulatorul:} #3
+
+  \textbf{Muta controlul:} sliderul principal al simulatorului si observa modificarile in timp real.
+
+  \textbf{Inainte sa scanezi (predictie):} Ce crezi ca se va intampla daca modifici valorile extreme?
+
+  \textbf{Incearca si observa:} #4
+
+  \begin{flushright}
+    \begin{tikzpicture}
+      \node[anchor=center] at (0,0) {\QRCodePlaceholder};
+      \node[anchor=north, font=\ttfamily\tiny, cqmuted] at (0,-1.3) {#1};
+    \end{tikzpicture}
+  \end{flushright}
+  \end{tcolorbox}
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@variabile\endcsname{%
+  scor <- 0 & int scor = 0; & scor = 0 & int scor = 0; \\
+  vieti <- 3 & int vieti = 3; & vieti = 3 & int vieti = 3; \\%
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@operatori\endcsname{%
+  scor <- scor + 1 & scor = scor + 1; & scor = scor + 1 & scor = scor + 1; \\
+  vieti <- vieti - 1 & vieti = vieti - 1; & vieti = vieti - 1 & vieti = vieti - 1; \\%
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@daca\endcsname{%
+  daca (chei > 0) atunci & if (chei > 0) \{ & if chei > 0: & if (chei > 0) \{ \\
+  \quad afiseaza "intra" & \quad cout << "intra"; & \quad print("intra") & \quad System.out.println("intra"); \\
+  sfarsit & \} & & \} \\%
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@cat-timp\endcsname{%
+  cat timp (i <= 5) executa & while (i <= 5) \{ & while i <= 5: & while (i <= 5) \{ \\
+  \quad i <- i + 1 & \quad i = i + 1; & \quad i = i + 1 & \quad i = i + 1; \\
+  sfarsit & \} & & \} \\%
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@pentru\endcsname{%
+  pentru i de la 1 la 5 executa & for (int i = 1; i <= 5; i++) \{ & for i in range(1, 6): & for (int i = 1; i <= 5; i++) \{ \\
+  \quad afiseaza i & \quad cout << i; & \quad print(i) & \quad System.out.println(i); \\
+  sfarsit & \} & & \} \\%
+}
+
+\expandafter\newcommand\csname cqSyntaxRows@imbricate\endcsname{%
+  pentru linie de la 1 la n executa & for (int linie = 1; linie <= n; linie++) \{ & for linie in range(1, n + 1): & for (int linie = 1; linie <= n; linie++) \{ \\
+  \quad pentru coloana de la 1 la n executa & \quad for (int coloana = 1; coloana <= n; coloana++) \{ & \quad for coloana in range(1, n + 1): & \quad for (int coloana = 1; coloana <= n; coloana++) \{ \\
+  \quad sfarsit & \quad \} & & \quad \} \\
+  sfarsit & \} & & \} \\%
+}
+
+\newcommand{\SyntaxCheck}[1]{%
+  \begin{languagebox}[Comparatie rapida: Pseudocod | C++ | Python | Java]
+  \small
+  \begin{tabularx}{\linewidth}{>{\ttfamily}X >{\ttfamily}X >{\ttfamily}X >{\ttfamily}X}
+  \toprule
+  Pseudocod & C++ & Python & Java \\
+  \midrule
+  \csname cqSyntaxRows@#1\endcsname
+  \bottomrule
+  \end{tabularx}
+  \end{languagebox}
+}
+
+\makeatother

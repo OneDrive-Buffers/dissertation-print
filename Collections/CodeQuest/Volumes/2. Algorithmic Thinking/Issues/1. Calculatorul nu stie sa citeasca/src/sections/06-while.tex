@@ -1,0 +1,86 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 5}{Structura repetitiva \texttt{cat timp}}{L5 • P1}
+
+\begin{missionbox}[De ce ne trebuie repetitie]
+  Pana acum am invatat sa extragem o cifra. Dar un numar are mai multe cifre. Daca vrem sa le prelucram pe toate, nu putem scrie aceeasi instructiune de zece ori sau de o suta de ori.
+
+  Avem nevoie de un mecanism care sa repete aceeasi actiune pana cand numarul nu mai are nimic de oferit. Acesta este rolul structurii \texttt{cat timp}.
+\end{missionbox}
+
+\begin{conceptbox}[Forma de baza]
+\begin{lstlisting}[style=codequest]
+cat timp (conditie) executa
+    instructiuni
+sfarsit cat timp
+\end{lstlisting}
+\end{conceptbox}
+
+\begin{guidebox}[Cheia acestei lectii]
+  Pentru lucrul cu cifrele, conditia naturala este \texttt{n != 0}.
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 5}{Bucla pe cifre}{L5 • P2}
+
+\begin{examplebox}[Schema de baza]
+\begin{lstlisting}[style=codequest]
+cat timp (n != 0) executa
+    uc = n % 10;
+    // lucram cu uc
+    n = n / 10;
+sfarsit cat timp
+\end{lstlisting}
+\end{examplebox}
+
+\begin{guidebox}[Intrebari ghidate]
+  1. Ce reprezinta \texttt{uc} la fiecare pas?
+
+  2. De ce trebuie sa existe instructiunea \texttt{n = n / 10}?
+
+  3. Ce s-ar intampla daca ea ar lipsi?
+  \AnswerSpace{5}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 5}{Trace pe bucla}{L5 • P3}
+
+\begin{solobox}[Exercitiu semi-ghidat]
+  Completeaza tabelul pentru \texttt{n = 5724}:
+  \begin{center}
+  \begin{tabularx}{\linewidth}{|X|X|X|}
+    \hline
+    \textbf{Pas} & \textbf{uc} & \textbf{n dupa /10} \\
+    \hline
+    Start & - & 5724 \\
+    \hline
+    1 & 4 & 572 \\
+    \hline
+    2 & & \\
+    \hline
+    3 & & \\
+    \hline
+    4 & & \\
+    \hline
+  \end{tabularx}
+  \end{center}
+\end{solobox}
+
+\begin{solobox}[Exercitiu independent scurt]
+  Fa singur un tabel similar pentru \texttt{n = 9081}.
+  \AnswerSpace{4}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 5}{Consolidare}{L5 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Explica in cuvinte cum stie bucla \texttt{cat timp} cand sa se opreasca.
+
+  2. Scrie schema generala prin care prelucram toate cifrele unui numar.
+
+  3. Arata de ce \texttt{n = 0} este un caz special atunci cand vrem sa numaram cifrele.
+  \AnswerSpace{8}
+\end{solobox}

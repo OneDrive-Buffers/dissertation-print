@@ -1,0 +1,115 @@
+\SetPageTheme{story}
+\PageHeader
+  {Operatori aritmetici}
+  {Scorul, viețile și energia cresc sau scad prin pași mici, repetați corect la fiecare acțiune.}
+  {Operatori 1 din 5}
+
+\begin{missionbox}[Narațiunea paginii]
+În jocuri, cele mai dese transformări sunt adunările și scăderile: +1 punct la colectare, -1 viață la coliziune, +10 bonus la final de nivel, -5 energie la folosirea unei abilități.
+
+Când înțelegi aceste transformări matematice, începi să vezi codul nu ca pe o simplă listă de comenzi, ci ca pe o secvență de actualizări controlate, esențiale pentru dinamica jocului.
+\end{missionbox}
+
+\begin{conceptbox}[Reținem!]
+\begin{itemize}
+\item \texttt{scor <- scor + 1} înseamnă un pas înainte în progresul tău.
+\item \texttt{vieti <- vieti - 1} înseamnă un pas înapoi în siguranța ta.
+\item \texttt{energie <- energie + k} înseamnă un salt controlat de resurse.
+\end{itemize}
+\end{conceptbox}
+
+\BlocklyExperiment{cq-i1-operator-score}{Scor incremental}{Testează blocurile care cresc sau scad scorul în funcție de evenimentele din joc. Vezi cum influențează fiecare alegere starea finală.}
+
+\SyntaxCheck{operatori}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Exerciții ghidate}
+  {Începem cu exemple scurte pentru a verifica reflexele, apoi extindem spre mini-scenarii de joc.}
+  {Operatori 2 din 5}
+
+\begin{guidebox}[Nivel ghidat: Calcule rapide]
+Completează valorile lipsă:
+\begin{enumerate}
+\item \texttt{scor <- 8}; după \texttt{scor <- scor + 2}, \texttt{scor = } \AnswerSpace{1}
+\item \texttt{vieti <- 4}; după \texttt{vieti <- vieti - 1}, \texttt{vieti = } \AnswerSpace{1}
+\item \texttt{monede <- 3}; după \texttt{monede <- monede + 5}, \texttt{monede = } \AnswerSpace{1}
+\end{enumerate}
+\AnswerSpace{2}
+\end{guidebox}
+
+\begin{guidebox}[Nivel ghidat: Traseul stării]
+Pornești cu \texttt{energie <- 10}. Se execută următoarea secvență:
+\begin{lstlisting}[style=codequest]
+energie <- energie - 2
+energie <- energie + 1
+energie <- energie - 3
+\end{lstlisting}
+Care este valoarea energiei la final?
+\AnswerSpace{4}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Scrii transformările}
+  {Acum completezi singur liniile lipsă, dar păstrezi același fir logic de actualizare.}
+  {Operatori 3 din 5}
+
+\begin{semibox}[Completează codul]
+Vrem să obținem exact următoarea evoluție a scorului: \texttt{5 -> 7 -> 6 -> 10}.
+\begin{lstlisting}[style=codequest]
+scor <- 5
+scor <- ................
+scor <- ................
+scor <- ................
+\end{lstlisting}
+\AnswerSpace{5}
+\end{semibox}
+
+\begin{semibox}[Scrie regula]
+Explică în 2-3 rânduri de ce \texttt{x <- x + 1} este considerată o \textit{actualizare a stării} și nu o simplă comparație matematică de egalitate.
+\AnswerSpace{4}
+\end{semibox}
+
+\SimulatorCard{cq-i1-operator-score}{Operatori și punctaj}{Relația dintre evenimentele din joc și modificările numerice constante din variabile.}{Schimbă valorile bonusului și penalizării în simulator, apoi compară două strategii de punctaj: una conservatoare și una agresivă. Care ajunge la target mai repede?}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Rezolvi scenarii complete}
+  {Rezolvi scenarii complete, cu explicații scurte și rezultate verificabile prin logică pură.}
+  {Operatori 4 din 5}
+
+\begin{solobox}[Set principal de provocări]
+\begin{enumerate}
+\item Pornind cu \texttt{scor <- 0}, scrie o secvență de 6 linii prin care să ajungi exact la valoarea 20.
+\item Pornind cu \texttt{vieti <- 5}, scrie o secvență de 4 linii prin care să ajungi la valoarea 1.
+\item Pornind cu \texttt{energie <- 12}, creează o secvență de actualizări care să se termine exact la valoarea 9.
+\end{enumerate}
+\AnswerSpace{10}
+\end{solobox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Explici de ce funcționează}
+  {Un programator bun nu doar calculează corect. El știe să explice clar de ce acel calcul este logic.}
+  {Operatori 5 din 5}
+
+\begin{solobox}[Problema jurnalului de bord]
+Tabela de scoruri înregistrată într-o sesiune de test este: \texttt{2, 6, 5, 11, 8}. Scrie o secvență de operații care poate produce exact această evoluție a scorului.
+\AnswerSpace{8}
+\end{solobox}
+
+\begin{solobox}[Reflecție]
+Ce greșeli apar cel mai des atunci când lucrezi cu operații de tipul \texttt{variabilă <- variabilă + ceva}? De ce este ușor să pierzi urma valorii corecte?
+\AnswerSpace{6}
+\end{solobox}
+
+\clearpage

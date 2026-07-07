@@ -1,0 +1,269 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{amsmath}
+
+\setlength{\columnsep}{1cm}
+
+\definecolor{mainblue}{RGB}{30,144,255}
+\definecolor{lightblue}{RGB}{220,240,255}
+\definecolor{lightgray}{RGB}{245,245,245}
+\definecolor{dark}{RGB}{40,40,40}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{lightgray},
+    frame=single,
+    breaklines=true
+}
+
+% Blocks
+\newtcolorbox{missionbox}{
+    colback=mainblue!10,
+    colframe=mainblue,
+    title=\textbf{Mission}
+}
+
+\newtcolorbox{theorybox}{
+    colback=white,
+    colframe=black!60,
+    title=\textbf{Concept}
+}
+
+\newtcolorbox{examplebox}{
+    colback=lightgray,
+    colframe=black,
+    title=\textbf{Observe}
+}
+
+\newtcolorbox{trybox}{
+    colback=green!5,
+    colframe=green!60!black,
+    title=\textbf{Try it yourself}
+}
+
+\newtcolorbox{bossbox}{
+    colback=purple!10,
+    colframe=purple,
+    title=\textbf{Boss Level}
+}
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{CODE QUEST}}\\
+Algorithms World\\
+Level 1 • Issue 1\\[10pt]
+
+{\huge \textbf{CALCULATORUL NU ȘTIE SĂ NUMERE}}\\
+O lecție de la variabile până la pătrate
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{multicols}{2}
+
+% Mission
+\begin{missionbox}
+Calculatorul NU știe să numere.
+
+El știe doar:
+\begin{itemize}
+\item să țină minte numere
+\item să facă operații simple (+, -)
+\item să sară între instrucțiuni
+\end{itemize}
+
+Dacă îl învățăm să numere, putem construi lumi — exact ca în Minecraft.
+\end{missionbox}
+
+% Variables
+\section*{Memoria}
+
+\begin{theorybox}
+Variabilele sunt zone de memorie în care calculatorul păstrează valori.
+
+Tipul cel mai folosit:
+\textbf{int} = număr întreg
+\end{theorybox}
+
+\begin{examplebox}
+\begin{lstlisting}
+int a = 1;
+int b = 10;
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Declară trei variabile:
+x = 5, y = 12, scor = 0
+\end{trybox}
+
+% Operators
+\section*{Aritmetica}
+
+\begin{examplebox}
+\begin{lstlisting}
+i = i + 1;
+i += 1;
+i++;
+\end{lstlisting}
+Toate înseamnă: crește i cu 1
+\end{examplebox}
+
+\begin{trybox}
+Dacă i = 7, calculează:
+i++; i+=3; i--;
+\end{trybox}
+
+% Control flow
+\section*{Salturi}
+
+\begin{theorybox}
+Calculatorul poate să sară între instrucțiuni.
+\end{theorybox}
+
+\begin{examplebox}
+\begin{lstlisting}
+cmp i, 10
+jle inside
+jmp out
+\end{lstlisting}
+\end{examplebox}
+
+% While
+\section*{Repetiția}
+
+\begin{examplebox}
+\begin{lstlisting}
+int i = 1;
+while(i <= 10)
+{
+    cout << i << " ";
+    i++;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Modifică programul pentru 1 → 20
+\end{trybox}
+
+% Key idea
+\section*{Cum numărăm?}
+
+\begin{theorybox}
+3 lucruri:
+\begin{itemize}
+\item Start: i = 1
+\item Stop: i <= 10
+\item Pas: i++
+\end{itemize}
+\end{theorybox}
+
+% For
+\section*{Structura for}
+
+\begin{examplebox}
+\begin{lstlisting}
+for(int i = 1; i <= 10; i++)
+{
+    cout << i;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Afișează doar numerele pare
+\end{trybox}
+
+% Fizz
+\section*{Condiții}
+
+\begin{examplebox}
+\begin{lstlisting}
+for(int i = 1; i <= 10; i++)
+{
+    if(i % 2 == 0)
+        cout << i;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Afișează numerele divizibile cu 3
+\end{trybox}
+
+% Double for
+\section*{Pătrate}
+
+\begin{examplebox}
+\begin{lstlisting}
+for(int i = 1; i <= 5; i++)
+{
+    for(int j = 1; j <= 5; j++)
+    {
+        cout << "#";
+    }
+    cout << endl;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Desenează un pătrat de dimensiune n
+\end{trybox}
+
+% Diagonals
+\section*{Diagonale}
+
+\begin{examplebox}
+\begin{lstlisting}
+if(i == j)
+    cout << "*";
+else
+    cout << ".";
+\end{lstlisting}
+\end{examplebox}
+
+\begin{trybox}
+Desenează diagonala secundară
+\end{trybox}
+
+% Triangle
+\section*{Triunghiuri}
+
+\begin{examplebox}
+\begin{lstlisting}
+for(int i = 1; i <= n; i++)
+{
+    for(int j = 1; j <= i; j++)
+        cout << "#";
+    cout << endl;
+}
+\end{lstlisting}
+\end{examplebox}
+
+% Boss
+\begin{bossbox}
+Se citește n.
+
+Desenează un pătrat n x n:
+\begin{itemize}
+\item \# margine
+\item * diagonala principală
+\item + diagonala secundară
+\item . interior
+\end{itemize}
+\end{bossbox}
+
+\end{multicols}
+
+\end{document}

@@ -1,0 +1,169 @@
+\SetPageTheme{story}
+\PageHeader
+  {Structura daca}
+  {Un joc devine convingator in clipa in care nu mai repeta aceeasi reactie, ci alege in functie de situatie.}
+  {Daca 1 din 6}
+
+\begin{missionbox}[Unde apare decizia]
+Pana aici am tinut minte stari si le-am actualizat. Dar un joc nu traieste doar din numere. El trebuie sa hotarasca:
+\begin{itemize}
+\item daca usa se deschide sau ramane blocata;
+\item daca jucatorul continua sau pierde o viata;
+\item daca apare un bonus sau un mesaj de avertizare.
+\end{itemize}
+
+Structura \texttt{daca} face exact acest lucru: pune o intrebare limpede si schimba drumul programului in functie de raspuns.
+\end{missionbox}
+
+\begin{conceptbox}[Retinem]
+O conditie buna nu este doar corecta matematic. Ea trebuie sa fie si usor de citit. Cand recitesti codul, ar trebui sa intelegi imediat ce verifica si de ce verifica acel lucru.
+\end{conceptbox}
+
+\BlocklyExperiment{cq-i1-if-branch}{Alegerea drumului}{Asambleaza blocuri care compara chei, vieti si scor, apoi urmareste cum aceeasi scena din joc primeste raspunsuri diferite.}
+
+\clearpage
+
+\SetPageTheme{theory}
+\PageHeader
+  {O ramura simpla}
+  {Uneori vrem doar sa executam un bloc atunci cand o conditie este adevarata.}
+  {Daca 2 din 6}
+
+\begin{examplebox}[Modelul de baza]
+\begin{lstlisting}[style=codequest]
+daca (chei > 0) atunci
+    afiseaza "Usa se deschide."
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Cum se citeste]
+Nu citim acest bloc ca pe o formula abstracta. Il citim ca pe o regula de joc:
+\begin{center}
+\textit{daca jucatorul are cel putin o cheie, se intampla actiunea de deschidere.}
+\end{center}
+Cand conditia este falsa, programul nu intra in bloc. Nu afiseaza nimic din acel fragment si merge mai departe.
+\end{missionbox}
+
+\begin{guidebox}[Urmarire scurta]
+Pentru fiecare stare, spune ce se intampla:
+\begin{enumerate}
+\item \texttt{chei = 2}
+\item \texttt{chei = 1}
+\item \texttt{chei = 0}
+\item \texttt{chei = -1} intr-un joc in care aceasta stare ar fi o eroare
+\end{enumerate}
+\AnswerSpace{6}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Daca ... altfel}
+  {Cand vrem raspuns complet, definim explicit ce se intampla in ambele situatii.}
+  {Daca 3 din 6}
+
+\begin{examplebox}[Doua drumuri]
+\begin{lstlisting}[style=codequest]
+daca (vieti > 0) atunci
+    afiseaza "Continua nivelul."
+altfel
+    afiseaza "Game over."
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{conceptbox}[De ce este util]
+Un bloc \texttt{daca ... altfel} este potrivit atunci cand nu vrem sa lasam loc de ambiguitate. Programul trebuie sa raspunda intr-un fel daca regula este adevarata si in alt fel daca nu este.
+\end{conceptbox}
+
+\begin{semibox}[Aplicam pe scene de joc]
+Rescrie modelul de mai sus pentru trei situatii:
+\begin{enumerate}
+\item cheia deschide sau nu deschide usa;
+\item o coliziune duce la penalizare sau nu produce nimic;
+\item atingerea checkpoint-ului salveaza progresul sau continua explorarea.
+\end{enumerate}
+\AnswerSpace{8}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{guided}
+\PageHeader
+  {Ordinea conditiilor}
+  {Cand avem mai multe cazuri, ordinea verificarilor poate schimba rezultatul final.}
+  {Daca 4 din 6}
+
+\begin{examplebox}[Bonus, progres, avertizare]
+\begin{lstlisting}[style=codequest]
+daca (scor >= 100) atunci
+    afiseaza "Nivel bonus"
+altfel daca (scor >= 50) atunci
+    afiseaza "Nivel standard"
+altfel
+    afiseaza "Mai exerseaza"
+sfarsit
+\end{lstlisting}
+\end{examplebox}
+
+\begin{missionbox}[Ideea pedagogica importanta]
+Verificarea cea mai restrictiva trebuie citita prima. Daca am testa direct \texttt{scor >= 50}, atunci valorile foarte mari ar intra prea devreme pe cazul mediu si nu ar mai ajunge niciodata la recompensa potrivita.
+\end{missionbox}
+
+\begin{guidebox}[Trace de executie]
+Completeaza:
+\begin{enumerate}
+\item ce mesaj apare pentru \texttt{scor = 30};
+\item ce mesaj apare pentru \texttt{scor = 50};
+\item ce mesaj apare pentru \texttt{scor = 100};
+\item ce se strica daca inversezi primele doua verificari.
+\end{enumerate}
+\AnswerSpace{7}
+\end{guidebox}
+
+\clearpage
+
+\SetPageTheme{simulation}
+\PageHeader
+  {Simulam decizia}
+  {Aici merita sa vezi cu ochii tai cum aceeasi conditie trimite jocul pe ramuri diferite.}
+  {Daca 5 din 6}
+
+\SimulatorCard{cq-i1-if-branch}{Ramificare in timp real}{Relatia dintre conditie, ramura aleasa si modificarea starii jocului dupa executie.}{Ruleaza cel putin cinci scenarii. Pentru fiecare, noteaza conditia, ramura urmata si variabila care s-a schimbat la final.}
+
+\begin{semibox}[Dupa simulare]
+\begin{enumerate}
+\item Ce conditie ti s-a parut cel mai usor de inteles din prima privire?
+\item Ce conditie a fost usor de interpretat gresit?
+\item Cum ai reformula o conditie neclara ca sa fie mai sigura pentru colegul care iti citeste codul?
+\end{enumerate}
+\AnswerSpace{6}
+\end{semibox}
+
+\clearpage
+
+\SetPageTheme{challenge}
+\PageHeader
+  {Scrii singur logica}
+  {Acum legam totul: conditie buna, alegere corecta, explicatie clara.}
+  {Daca 6 din 6}
+
+\SyntaxCheck{daca}
+
+\begin{solobox}[Set complet]
+\begin{enumerate}
+\item Scrie o regula prin care usa se deschide doar daca jucatorul are exact 2 chei.
+\item Scrie un bloc \texttt{daca ... altfel} pentru energia critica: sub 20 apare avertizare, altfel jocul continua normal.
+\item Scrie trei conditii ordonate pentru un sistem de medalie: aur, argint, bronz.
+\item Explica in 4--5 randuri de ce o conditie buna face jocul mai previzibil si mai usor de reparat.
+\end{enumerate}
+\AnswerSpace{12}
+\end{solobox}
+
+\begin{checkpointbox}[Ideea care ramane]
+Structura \texttt{daca} inseamna alegere controlata. Calculatorul nu intelege intentii sau emotii. Intelege doar conditii bine formulate si ramuri clar separate.
+\end{checkpointbox}
+
+\clearpage

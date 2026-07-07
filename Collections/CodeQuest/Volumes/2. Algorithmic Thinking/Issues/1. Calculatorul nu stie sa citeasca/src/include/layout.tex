@@ -1,0 +1,149 @@
+\geometry{
+  paperwidth=176mm,
+  paperheight=250mm,
+  inner=16mm,
+  outer=16mm,
+  top=18mm,
+  bottom=18mm,
+  headheight=24pt,
+  headsep=8mm
+}
+
+\definecolor{cqbg}{HTML}{07111F}
+\definecolor{cqcodebg}{HTML}{0D1828}
+\definecolor{cqtoolbar}{HTML}{10253A}
+\definecolor{cqink}{HTML}{101826}
+\definecolor{cqtext}{HTML}{E6EEF8}
+\definecolor{cqmuted}{HTML}{9FB3C9}
+\definecolor{cqcyan}{HTML}{38D7FF}
+\definecolor{cqlime}{HTML}{77F2A1}
+\definecolor{cqyellow}{HTML}{FFD166}
+\definecolor{cqmagenta}{HTML}{FF5D8F}
+\definecolor{cqpanel}{HTML}{F5F7FB}
+\definecolor{cqsoft}{HTML}{EAF1F8}
+\definecolor{cqline}{HTML}{C9D5E5}
+\definecolor{cqdarkpanel}{HTML}{1D2E45}
+\definecolor{cqorange}{HTML}{FF9F1C}
+\definecolor{cqviolet}{HTML}{8A7DFF}
+
+\pagecolor{cqbg}
+\color{cqtext}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.4em, itemsep=0.2em, topsep=0.3em}
+\setlist[enumerate]{leftmargin=1.6em, itemsep=0.2em, topsep=0.3em}
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\textcolor{cqcyan}{\small\ttfamily\bfseries \IssueCollection}}
+\fancyhead[CE,CO]{\textcolor{cqtext}{\small \IssueTitle}}
+\fancyhead[RE,LO]{\textcolor{cqlime}{\small\ttfamily\bfseries \IssueLevel{} \textbullet{} \IssueNumber}}
+\fancyfoot[CE,CO]{\textcolor{cqmuted}{\small\ttfamily\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{cqcyan!35}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\section}
+  {\Large\bfseries\color{cqtext}}
+  {}
+  {0pt}
+  {}
+  [\vspace{0.2em}\color{cqcyan}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{cqpanel}}
+  {}
+  {0pt}
+  {}
+
+\lstdefinelanguage{QuestPseudo}{
+  morekeywords={citeste,afiseaza,daca,atunci,altfel,cat,timp,executa,sfarsit,pentru,de,la,cu,pas,si,sau,repeta,rand,nou},
+  sensitive=false,
+  morecomment=[l]{//},
+  morestring=[b]"
+}
+
+\lstdefinestyle{codequest}{
+  language=QuestPseudo,
+  basicstyle=\ttfamily\small\color{cqtext},
+  keywordstyle=\color{cqcyan}\bfseries,
+  commentstyle=\color{cqmuted}\itshape,
+  stringstyle=\color{cqyellow},
+  showstringspaces=false,
+  frame=single,
+  frameround=tttt,
+  rulecolor=\color{cqcyan!55},
+  backgroundcolor=\color{cqcodebg},
+  tabsize=2,
+  breaklines=true,
+  keepspaces=true,
+  columns=fullflexible
+}
+
+\lstdefinestyle{languagequest}{
+  style=codequest,
+  numbers=left,
+  numberstyle=\tiny\color{cqmuted},
+  stepnumber=1,
+  numbersep=6pt
+}
+
+\newcommand{\cqthemeat}{theory}
+\newcommand{\SetPageTheme}[1]{\renewcommand{\cqthemeat}{#1}}
+
+\newcommand{\DigitScannerGhost}[4]{%
+  \begin{scope}[shift={({#1},{#2})}, scale=#3]
+    \draw[#4, opacity=0.22, line width=0.5pt, rounded corners=3pt] (0,0) rectangle (4.6,1.35);
+    \draw[#4, opacity=0.14, line width=0.5pt] (0.35,0.24) -- (4.25,0.24);
+    \draw[#4, opacity=0.14, line width=0.5pt] (0.35,1.11) -- (4.25,1.11);
+    \foreach \x/\d in {0.55/1,1.15/2,1.75/3,2.35/5,2.95/3,3.55/2,4.15/1} {
+      \node[text=#4, opacity=0.18, font=\ttfamily\bfseries] at (\x,0.68) {\d};
+    }
+    \draw[#4, opacity=0.26, line width=1pt] (2.3,-0.2) -- (2.3,1.55);
+    \draw[#4, opacity=0.18, line width=0.5pt] (1.1,-0.05) -- (3.5,1.4);
+    \draw[#4, opacity=0.18, line width=0.5pt] (3.5,-0.05) -- (1.1,1.4);
+  \end{scope}
+}
+
+\AddToHook{shipout/background}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \ifthenelse{\equal{\cqthemeat}{paper}}{
+      \fill[white] (current page.south west) rectangle (current page.north east);
+    }{
+      \fill[cqbg] (current page.south west) rectangle (current page.north east);
+    }
+
+    \ifthenelse{\equal{\cqthemeat}{story}}{
+      \DigitScannerGhost{1.4cm}{-4cm}{1.1}{cqcyan}
+      \DigitScannerGhost{11.8cm}{-18cm}{1.4}{cqorange}
+    }{}
+
+    \ifthenelse{\equal{\cqthemeat}{theory}}{
+      \DigitScannerGhost{0.8cm}{-2cm}{0.75}{cqcyan}
+      \DigitScannerGhost{13.2cm}{-5cm}{0.7}{cqlime}
+      \DigitScannerGhost{1.5cm}{-22cm}{0.9}{cqyellow}
+    }{}
+
+    \ifthenelse{\equal{\cqthemeat}{guided}}{
+      \foreach \y in {-3,-8,-13,-18,-23} {
+        \DigitScannerGhost{14.2cm}{\y cm}{0.55}{cqcyan}
+      }
+    }{}
+
+    \ifthenelse{\equal{\cqthemeat}{challenge}}{
+      \DigitScannerGhost{0.7cm}{-1cm}{1.8}{cqmagenta}
+      \DigitScannerGhost{12.7cm}{-23cm}{1.6}{cqyellow}
+    }{}
+
+    \ifthenelse{\equal{\cqthemeat}{paper}}{}{
+      \draw[cqcyan!15, line width=0.4pt]
+        ([xshift=1.3cm,yshift=-1.65cm]current page.north west) --
+        ([xshift=-1.3cm,yshift=-1.65cm]current page.north east);
+      \draw[cqmagenta!12, line width=0.4pt]
+        ([xshift=1.4cm,yshift=1.2cm]current page.south west) --
+        ([xshift=-1.4cm,yshift=1.2cm]current page.south east);
+    }
+  \end{tikzpicture}%
+}

@@ -1,0 +1,90 @@
+\SetPageTheme{story}
+\PageHeader{Lectia 7}{Intelegerea algoritmului de oglindire}{L7 • P1}
+
+\begin{missionbox}[O idee noua]
+  Nu ne mai este suficient doar sa citim cifrele. Acum vrem sa construim un numar nou din ele.
+
+  Cand verificam un palindrom, trebuie sa obtinem oglinditul numarului initial. Pentru asta nu ajunge sa afisam cifrele una cate una. Trebuie sa le asezam intr-o structura noua si coerenta.
+\end{missionbox}
+
+\begin{conceptbox}[Formula pentru oglindit]
+  Daca \texttt{uc} este cifra extrasa, atunci:
+  \[
+    \texttt{ogl = ogl * 10 + uc}
+  \]
+  Mai intai mutam tot ce aveam in \texttt{ogl} o pozitie la stanga, apoi adaugam cifra noua.
+\end{conceptbox}
+
+\begin{guidebox}[Activare]
+  Daca \texttt{ogl = 43} si \texttt{uc = 2}, dupa actualizare obtinem \hrulefill
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 7}{Trace pe oglindire}{L7 • P2}
+
+\begin{examplebox}[Exemplu pentru \texttt{n = 1234}]
+  \begin{center}
+  \begin{tabularx}{\linewidth}{|X|X|X|X|}
+    \hline
+    \textbf{Pas} & \textbf{uc} & \textbf{ogl} & \textbf{n dupa /10} \\
+    \hline
+    Start & - & 0 & 1234 \\
+    \hline
+    1 & 4 & 4 & 123 \\
+    \hline
+    2 & 3 & 43 & 12 \\
+    \hline
+    3 & 2 & 432 & 1 \\
+    \hline
+    4 & 1 & 4321 & 0 \\
+    \hline
+  \end{tabularx}
+  \end{center}
+\end{examplebox}
+
+\begin{guidebox}[Exercitiu ghidat]
+  Explica de ce formula adauga cifra noua la sfarsitul lui \texttt{ogl}.
+  \AnswerSpace{3}
+\end{guidebox}
+
+\newpage
+\SetPageTheme{guided}
+\PageHeader{Lectia 7}{Semi-ghidat}{L7 • P3}
+
+\begin{solobox}[Completeaza tabelul]
+  Pentru \texttt{n = 508} completeaza:
+  \begin{center}
+  \begin{tabularx}{\linewidth}{|X|X|X|X|}
+    \hline
+    \textbf{Pas} & \textbf{uc} & \textbf{ogl} & \textbf{n dupa /10} \\
+    \hline
+    Start & - & 0 & 508 \\
+    \hline
+    1 & & & \\
+    \hline
+    2 & & & \\
+    \hline
+    3 & & & \\
+    \hline
+  \end{tabularx}
+  \end{center}
+\end{solobox}
+
+\begin{solobox}[Independent scurt]
+  Ce oglindit obtii pentru \texttt{n = 7002}? Scrie doar pasii esentiali.
+  \AnswerSpace{4}
+\end{solobox}
+
+\newpage
+\SetPageTheme{challenge}
+\PageHeader{Lectia 7}{Independent}{L7 • P4}
+
+\begin{solobox}[Fisa independenta]
+  1. Scrie singur algoritmul care construieste oglinditul unui numar.
+
+  2. Arata cum functioneaza pentru \texttt{n = 1221}.
+
+  3. Explica de ce aceasta formula este mai puternica decat simpla afisare a cifrelor.
+  \AnswerSpace{8}
+\end{solobox}

@@ -1,0 +1,87 @@
+\PageHeader
+  {Appendix: tablouri și diagonale în C++}
+  {Aceleași reguli de rânduri și coloane, dar în sintaxa unui limbaj real.}
+  {Pattern-uri 1 din 3}
+
+\begin{examplebox}[Pătrat plin]
+\begin{lstlisting}[style=languagequest,language=C++]
+for (int linie = 1; linie <= n; linie++) {
+    for (int coloana = 1; coloana <= n; coloana++) {
+        cout << "#";
+    }
+    cout << endl;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[Diagonala principală]
+\begin{lstlisting}[style=languagequest,language=C++]
+for (int linie = 1; linie <= n; linie++) {
+    for (int coloana = 1; coloana <= n; coloana++) {
+        if (linie == coloana) cout << "*";
+        else cout << ".";
+    }
+    cout << endl;
+}
+\end{lstlisting}
+\end{examplebox}
+
+\clearpage
+
+\PageHeader
+  {Appendix: tablouri și diagonale în Python}
+  {Python lasă foarte clar la vedere indentarea buclelor imbricate.}
+  {Pattern-uri 2 din 3}
+
+\begin{examplebox}[Pătrat plin]
+\begin{lstlisting}[style=languagequest,language=Python]
+for linie in range(1, n + 1):
+    for coloana in range(1, n + 1):
+        print("#", end="")
+    print()
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[Diagonala principală]
+\begin{lstlisting}[style=languagequest,language=Python]
+for linie in range(1, n + 1):
+    for coloana in range(1, n + 1):
+        if linie == coloana:
+            print("*", end="")
+        else:
+            print(".", end="")
+    print()
+\end{lstlisting}
+\end{examplebox}
+
+\clearpage
+
+\PageHeader
+  {Appendix: tablouri și diagonale în Java}
+  {Java cere aceeași disciplină a acoladelor și a tipurilor, dar logica rămâne neschimbată.}
+  {Pattern-uri 3 din 3}
+
+\begin{examplebox}[Pătrat plin]
+\begin{lstlisting}[style=languagequest,language=Java]
+for (int linie = 1; linie <= n; linie++) {
+    for (int coloana = 1; coloana <= n; coloana++) {
+        System.out.print("#");
+    }
+    System.out.println();
+}
+\end{lstlisting}
+\end{examplebox}
+
+\begin{examplebox}[Diagonala principală]
+\begin{lstlisting}[style=languagequest,language=Java]
+for (int linie = 1; linie <= n; linie++) {
+    for (int coloana = 1; coloana <= n; coloana++) {
+        if (linie == coloana) System.out.print("*");
+        else System.out.print(".");
+    }
+    System.out.println();
+}
+\end{lstlisting}
+\end{examplebox}
+
+\clearpage
